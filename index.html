@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>1167133</title>
+</head>
+<body>
+    <h1 id="h1">текст</h1>
+    <input id="input" type="text">
+    
+    <script>
+        const words = {
+            "привет": "hello",
+            "мир": "world",
+            "кот": "cat",
+            "дом": "house"
+        };
+
+        document.getElementById("input").oninput = function() {
+            const word = this.value.toLowerCase();
+            document.getElementById("h1").textContent = words[word] || "нет перевода";
+        };
+    </script>
+</body>
+</html>
