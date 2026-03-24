@@ -1,0 +1,14 @@
+[[main]]
+  name = "О проекте"
+  pageRef = "about"
+  weight = 10
+
+[[main]]
+  name = "GitHub"
+  url = "https://github.com/NerdySnake6/NerdySnake6.github.io"
+  weight = 20
+
+[[footer]]
+  name = "Исходный код"
+  url = "https://github.com/NerdySnake6/NerdySnake6.github.io"
+  weight = 10

@@ -1,0 +1,22 @@
+disabled = false
+languageCode = "ru"
+languageName = "Русский"
+weight = 1
+title = "NerdySnake6"
+
+[params]
+  displayName = "RU"
+  isoCode = "ru"
+  rtl = false
+  dateFormat = "02.01.2006"
+  description = "Персональный сайт о проектах, заметках и экспериментах на Hugo."
+  copyright = "NerdySnake6"
+
+[params.author]
+  name = "NerdySnake6"
+  headline = "Небольшой сайт о проектах, заметках и экспериментах."
+  bio = "Собираю персональный сайт на Hugo и постепенно делаю его удобнее."
+  links = [
+    { github = "https://github.com/NerdySnake6" },
+    { link = "https://github.com/NerdySnake6/NerdySnake6.github.io" },
+  ]
