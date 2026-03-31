@@ -1,0 +1,77 @@
+name: Portfolio CI and Deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check data.js
+          node --check app.js
+
+      - name: Validate static site structure
+        run: node scripts/validate-site.mjs
+
+      - name: Prepare Pages artifact
+        if: github.event_name != 'pull_request'
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp index.html app.js data.js style.css _site/
+          if [ -f .nojekyll ]; then
+            cp .nojekyll _site/
+          fi
+          if [ -d assets ]; then
+            cp -R assets _site/assets
+          fi
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: validate
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

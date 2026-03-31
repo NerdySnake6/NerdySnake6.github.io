@@ -4,6 +4,9 @@
 
 ```
 my-portfolio/
+├── .github/
+│   └── workflows/
+│       └── pages.yml    — Проверка и деплой через GitHub Actions
 ├── index.html          — Основная HTML-страница
 ├── style.css           — Все стили сайта
 ├── data.js             — ВСЕ ДАННЫЕ САЙТА (редактируйте этот файл)
@@ -11,6 +14,8 @@ my-portfolio/
 ├── assets/
 │   ├── photo.jpg       — Ваше фото (замените на своё)
 │   └── certificates/   — Изображения сертификатов
+├── scripts/
+│   └── validate-site.mjs — Локальная и CI-проверка структуры сайта
 ├── docs/
 │   └── README.md       — Эта документация
 └── .nojekyll           — Для GitHub Pages
@@ -103,12 +108,20 @@ contacts: {
 
 ## Как опубликовать на GitHub Pages
 
-1. Убедитесь, что все файлы в репозитории
-2. Зайдите в **Settings → Pages** вашего репозитория
-3. В разделе **Source** выберите **Deploy from a branch**
-4. Выберите ветку `main` и папку `/ (root)`
-5. Нажмите **Save**
-6. Через 1–2 минуты сайт будет доступен по адресу `https://nerdysnake6.github.io/my-portfolio/`
+Сайт теперь публикуется через **GitHub Actions**.
+
+1. Убедитесь, что все файлы закоммичены и отправлены в GitHub-репозиторий
+2. Зайдите в **Settings → Pages**
+3. В блоке **Build and deployment** выберите источник **GitHub Actions**
+4. Сделайте `push` в ветку `main`
+5. Откройте вкладку **Actions** и дождитесь успешного выполнения workflow `Portfolio CI and Deploy`
+6. После успешного деплоя сайт будет доступен по адресу `https://nerdysnake6.github.io/my-portfolio/`
+
+### Что делает workflow
+
+- На `pull request` запускает автоматическую проверку структуры сайта
+- На `push` в `main` проверяет файлы и публикует сайт в GitHub Pages
+- Если в `data.js` указан отсутствующий файл изображения, workflow покажет предупреждение, но не остановит деплой
 
 ## Как запустить локально
 
