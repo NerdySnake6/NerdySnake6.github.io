@@ -619,18 +619,19 @@ img {
 
 .certificate__image {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background: var(--bg-secondary);
+  aspect-ratio: 3 / 4;
+  background: linear-gradient(180deg, #f7f8fb 0%, #eef1f7 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: var(--space-sm);
 }
 
 .certificate__image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .certificate__info {

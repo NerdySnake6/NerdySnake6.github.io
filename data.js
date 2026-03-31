@@ -150,13 +150,18 @@ const siteData = {
   certificates: {
     title: "Сертификаты",
     items: [
-      // Пример:
-      // {
-      //   title: "Python for Data Science",
-      //   issuer: "Coursera",
-      //   year: "2025",
-      //   image: "assets/certificates/python-ds.jpg"
-      // }
+      {
+        title: "СУБД Postgres Pro",
+        issuer: "BRAIM / IT-Планета",
+        year: "2026",
+        image: "assets/certificates/braim-postgres-pro.png"
+      },
+      {
+        title: "Прикладное программирование if...else",
+        issuer: "BRAIM / IT-Планета",
+        year: "2026",
+        image: "assets/certificates/braim-if-else.png"
+      }
     ]
   },
 
