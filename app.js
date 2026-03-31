@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  let certificateModal;
+
   // ----------------------------------------------------------
   // SVG Icons (inline to avoid external dependencies)
   // ----------------------------------------------------------
@@ -221,7 +223,10 @@
     grid.classList.add('reveal-children');
 
     certificates.items.forEach(cert => {
-      const card = el('div', 'certificate');
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'certificate';
+      card.setAttribute('aria-label', `Открыть сертификат: ${cert.title}`);
       card.innerHTML = `
         <div class="certificate__image">
           ${cert.image ? `<img src="${cert.image}" alt="${cert.title}">` : ''}
@@ -231,8 +236,83 @@
           <div class="certificate__meta">${cert.issuer || ''}${cert.year ? ' · ' + cert.year : ''}</div>
         </div>
       `;
+      card.addEventListener('click', () => {
+        if (certificateModal) {
+          certificateModal.open(cert);
+        }
+      });
       grid.appendChild(card);
     });
+  }
+
+  // ----------------------------------------------------------
+  // CERTIFICATE MODAL
+  // ----------------------------------------------------------
+  function initCertificateModal() {
+    const modal = el('div', 'certificate-modal');
+    modal.setAttribute('hidden', '');
+    modal.innerHTML = `
+      <div class="certificate-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+        <button type="button" class="certificate-modal__close" aria-label="Закрыть окно">&times;</button>
+        <div class="certificate-modal__image-wrap">
+          <img class="certificate-modal__image" alt="">
+        </div>
+        <div class="certificate-modal__info">
+          <div class="certificate-modal__title" id="certificate-modal-title"></div>
+          <div class="certificate-modal__meta"></div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const closeButton = modal.querySelector('.certificate-modal__close');
+    const image = modal.querySelector('.certificate-modal__image');
+    const title = modal.querySelector('.certificate-modal__title');
+    const meta = modal.querySelector('.certificate-modal__meta');
+    let lastFocusedElement = null;
+
+    function close() {
+      modal.classList.remove('certificate-modal--open');
+      document.body.classList.remove('modal-open');
+      modal.setAttribute('hidden', '');
+      image.removeAttribute('src');
+
+      if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        lastFocusedElement.focus();
+      }
+    }
+
+    function open(cert) {
+      lastFocusedElement = document.activeElement;
+      title.textContent = cert.title || '';
+      meta.textContent = `${cert.issuer || ''}${cert.year ? ' · ' + cert.year : ''}`.replace(/^ · | · $/g, '');
+      image.src = cert.image || '';
+      image.alt = cert.title || 'Сертификат';
+      modal.removeAttribute('hidden');
+      document.body.classList.add('modal-open');
+
+      requestAnimationFrame(() => {
+        modal.classList.add('certificate-modal--open');
+      });
+
+      closeButton.focus();
+    }
+
+    closeButton.addEventListener('click', close);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('certificate-modal--open')) {
+        close();
+      }
+    });
+
+    certificateModal = { open, close };
   }
 
   // ----------------------------------------------------------
@@ -340,6 +420,7 @@
   // INIT
   // ----------------------------------------------------------
   function init() {
+    initCertificateModal();
     renderNav();
     renderHero();
     renderAbout();
