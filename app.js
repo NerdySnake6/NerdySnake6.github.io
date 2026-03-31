@@ -54,10 +54,6 @@
       linksList.classList.toggle('nav__links--open');
     });
 
-    // Nav scroll shadow
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('nav--scrolled', window.scrollY > 20);
-    });
   }
 
   // ----------------------------------------------------------
@@ -379,44 +375,6 @@
   }
 
   // ----------------------------------------------------------
-  // Scroll Reveal (IntersectionObserver)
-  // ----------------------------------------------------------
-  function initScrollReveal() {
-    const sections = document.querySelectorAll('.section');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // Reveal section title
-          const title = entry.target.querySelector('.section__title');
-          if (title) title.classList.add('reveal--visible');
-
-          // Reveal children
-          const children = entry.target.querySelector('.reveal-children');
-          if (children) {
-            setTimeout(() => {
-              children.classList.add('reveal-children--visible');
-            }, 200);
-          }
-
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    sections.forEach(section => {
-      // Mark titles for reveal
-      const title = section.querySelector('.section__title');
-      if (title) title.classList.add('reveal');
-
-      observer.observe(section);
-    });
-  }
-
-  // ----------------------------------------------------------
   // INIT
   // ----------------------------------------------------------
   function init() {
@@ -430,7 +388,6 @@
     renderCertificates();
     renderContacts();
     renderFooter();
-    initScrollReveal();
   }
 
   // Run when DOM is ready

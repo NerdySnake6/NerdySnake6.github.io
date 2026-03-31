@@ -123,16 +123,9 @@ img {
   left: 0;
   right: 0;
   height: var(--nav-height);
-  background: rgba(247, 248, 252, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
-  transition: box-shadow var(--duration) var(--ease);
-}
-
-.nav--scrolled {
-  box-shadow: var(--shadow-sm);
 }
 
 .nav__inner {
@@ -326,6 +319,8 @@ img {
    ---------------------------------------------------------- */
 .section {
   padding: var(--space-4xl) var(--space-lg);
+  content-visibility: auto;
+  contain-intrinsic-size: 700px;
 }
 
 .section--alt {
@@ -853,34 +848,13 @@ img {
 /* ----------------------------------------------------------
    ANIMATIONS — Scroll reveal
    ---------------------------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-}
-
-.reveal--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Staggered children */
-.reveal-children > * {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-}
-
-.reveal-children--visible > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-children--visible > *:nth-child(2) { transition-delay: 80ms; }
-.reveal-children--visible > *:nth-child(3) { transition-delay: 160ms; }
-.reveal-children--visible > *:nth-child(4) { transition-delay: 240ms; }
-.reveal-children--visible > *:nth-child(5) { transition-delay: 320ms; }
-.reveal-children--visible > *:nth-child(6) { transition-delay: 400ms; }
-
+.reveal,
+.reveal--visible,
+.reveal-children > *,
 .reveal-children--visible > * {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
+  transition: none;
 }
 
 /* Hero specific animations */
@@ -928,9 +902,7 @@ img {
     top: var(--nav-height);
     left: 0;
     right: 0;
-    background: rgba(247, 248, 252, 0.98);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: var(--bg-primary);
     flex-direction: column;
     padding: var(--space-lg);
     gap: 0;

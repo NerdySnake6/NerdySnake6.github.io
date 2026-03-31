@@ -175,7 +175,7 @@ const siteData = {
     githubUrl: "https://github.com/NerdySnake6",
     // Раскомментируйте и заполните, если нужен Telegram:
     // telegram: "your_username",
-    location: "Россия"
+    location: "Россия, Санкт-Петербург"
   }
 
 };
