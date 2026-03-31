@@ -1,136 +1,57 @@
-# Документация по сайту-резюме
+# Техническая памятка
+
+Этот файл нужен для сопровождения сайта.
 
 ## Структура проекта
 
-```
+```text
 my-portfolio/
 ├── .github/
 │   └── workflows/
-│       └── pages.yml    — Проверка и деплой через GitHub Actions
-├── index.html          — Основная HTML-страница
-├── style.css           — Все стили сайта
-├── data.js             — ВСЕ ДАННЫЕ САЙТА (редактируйте этот файл)
-├── app.js              — Логика рендеринга (не нужно трогать)
+│       └── pages.yml
 ├── assets/
-│   ├── photo.jpg       — Ваше фото (замените на своё)
-│   └── certificates/   — Изображения сертификатов
-├── scripts/
-│   └── validate-site.mjs — Локальная и CI-проверка структуры сайта
+│   ├── certificates/
+│   │   ├── braim-if-else.png
+│   │   └── braim-postgres-pro.png
+│   └── photo.jpg
 ├── docs/
-│   └── README.md       — Эта документация
-└── .nojekyll           — Для GitHub Pages
+│   └── README.md
+├── scripts/
+│   └── validate-site.mjs
+├── index.html
+├── style.css
+├── app.js
+├── data.js
+└── README.md
 ```
 
-## Как редактировать контент
+## Контент
 
-**Все данные хранятся в файле `data.js`.** Вам не нужно трогать HTML или CSS.
+Основной контент редактируется в `data.js`.
 
-### Изменить информацию обо мне
+- `hero` — первый экран
+- `about` — блок "Обо мне"
+- `skills` — навыки
+- `achievements` — достижения
+- `projects` — проекты
+- `certificates` — сертификаты
+- `contacts` — контакты
 
-Откройте `data.js`, найдите секцию `about` и измените текст в массиве `paragraphs`:
+## Ассеты
 
-```js
-about: {
-  title: "Обо мне",
-  paragraphs: [
-    "Ваш первый абзац...",
-    "Ваш второй абзац..."
-  ]
-}
-```
+- `assets/photo.jpg` — фото профиля
+- `assets/certificates/` — изображения сертификатов
 
-### Изменить навыки
+## Публикация
 
-Найдите секцию `skills` → `items`. Каждый навык содержит:
-- `category` — название категории
-- `technologies` — список технологий (массив строк)
-- `description` — описание понятным языком
+Сайт разворачивается через GitHub Pages и GitHub Actions.
 
-### Добавить достижение
+- workflow: `.github/workflows/pages.yml`
+- ветка публикации: `main`
+- адрес сайта: `https://nerdysnake6.github.io/`
 
-Найдите секцию `achievements` → `items` и добавьте новый объект:
-
-```js
-{
-  title: "Название достижения",
-  year: "2025",
-  description: "Краткое описание",
-  result: "Результат или роль"
-}
-```
-
-### Добавить проект
-
-Найдите секцию `projects` → `items` и добавьте:
-
-```js
-{
-  title: "Название проекта",
-  task: "Какая задача решалась",
-  tools: ["Python", "pandas", "..."],
-  work: "Что именно было сделано",
-  result: "Какой результат получен"
-}
-```
-
-### Добавить сертификат
-
-1. Положите изображение сертификата в папку `assets/certificates/`
-2. В `data.js` найдите секцию `certificates` → `items` и добавьте:
-
-```js
-{
-  title: "Название сертификата",
-  issuer: "Кто выдал (Coursera, Stepik и т.д.)",
-  year: "2025",
-  image: "assets/certificates/имя-файла.jpg"
-}
-```
-
-### Изменить контакты
-
-Найдите секцию `contacts`:
-
-```js
-contacts: {
-  title: "Контакты",
-  email: "your@email.com",
-  github: "YourUsername",
-  githubUrl: "https://github.com/YourUsername",
-  telegram: "your_telegram",  // раскомментируйте если нужно
-  location: "Россия"
-}
-```
-
-### Заменить фото
-
-Замените файл `assets/photo.jpg` на своё фото. Рекомендуемый размер: квадратное, минимум 400×400 пикселей.
-
-## Как опубликовать на GitHub Pages
-
-Сайт теперь публикуется через **GitHub Actions**.
-
-1. Убедитесь, что все файлы закоммичены и отправлены в GitHub-репозиторий
-2. Зайдите в **Settings → Pages**
-3. В блоке **Build and deployment** выберите источник **GitHub Actions**
-4. Сделайте `push` в ветку `main`
-5. Откройте вкладку **Actions** и дождитесь успешного выполнения workflow `Portfolio CI and Deploy`
-6. После успешного деплоя сайт будет доступен по адресу `https://nerdysnake6.github.io/my-portfolio/`
-
-### Что делает workflow
-
-- На `pull request` запускает автоматическую проверку структуры сайта
-- На `push` в `main` проверяет файлы и публикует сайт в GitHub Pages
-- Если в `data.js` указан отсутствующий файл изображения, workflow покажет предупреждение, но не остановит деплой
-
-## Как запустить локально
-
-Просто откройте файл `index.html` в браузере. Или используйте локальный сервер:
+## Локальный просмотр
 
 ```bash
-# Если установлен Python:
 python3 -m http.server 8000
-
-# Если установлен Node.js:
-npx serve .
 ```
