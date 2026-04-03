@@ -28,6 +28,93 @@
     return e;
   }
 
+  function setHeroContactLink(options) {
+    const { elementId, iconId, textId, icon, text, href, external } = options;
+    const element = document.getElementById(elementId);
+    const iconElement = document.getElementById(iconId);
+    const textElement = document.getElementById(textId);
+    const hasValue = Boolean(text);
+
+    element.hidden = !hasValue;
+    if (!hasValue) return false;
+
+    iconElement.innerHTML = icon;
+    textElement.textContent = text;
+    element.href = href;
+
+    if (external) {
+      element.target = '_blank';
+      element.rel = 'noopener';
+    } else {
+      element.removeAttribute('target');
+      element.removeAttribute('rel');
+    }
+
+    return true;
+  }
+
+  function setHeroContactText(options) {
+    const { elementId, iconId, textId, icon, text } = options;
+    const element = document.getElementById(elementId);
+    const iconElement = document.getElementById(iconId);
+    const textElement = document.getElementById(textId);
+    const hasValue = Boolean(text);
+
+    element.hidden = !hasValue;
+    if (!hasValue) return false;
+
+    iconElement.innerHTML = icon;
+    textElement.textContent = text;
+    return true;
+  }
+
+  function renderHeroContacts() {
+    const { contacts } = siteData;
+    const contactPanel = document.getElementById('hero-contact-panel');
+    const contactKicker = document.getElementById('hero-contact-kicker');
+
+    contactKicker.textContent = contacts.title || 'Контакты';
+
+    const hasEmail = setHeroContactLink({
+      elementId: 'hero-contact-email',
+      iconId: 'hero-contact-email-icon',
+      textId: 'hero-contact-email-text',
+      icon: icons.email,
+      text: contacts.email,
+      href: contacts.email ? `mailto:${contacts.email}` : ''
+    });
+
+    const hasGithub = setHeroContactLink({
+      elementId: 'hero-contact-github',
+      iconId: 'hero-contact-github-icon',
+      textId: 'hero-contact-github-text',
+      icon: icons.github,
+      text: contacts.github ? `@${contacts.github}` : '',
+      href: contacts.githubUrl || '',
+      external: true
+    });
+
+    const hasTelegram = setHeroContactLink({
+      elementId: 'hero-contact-telegram',
+      iconId: 'hero-contact-telegram-icon',
+      textId: 'hero-contact-telegram-text',
+      icon: icons.telegram,
+      text: contacts.telegram ? `@${contacts.telegram}` : '',
+      href: contacts.telegram ? `https://t.me/${contacts.telegram}` : '',
+      external: true
+    });
+
+    const hasLocation = setHeroContactText({
+      elementId: 'hero-contact-location',
+      iconId: 'hero-contact-location-icon',
+      textId: 'hero-contact-location-text',
+      icon: icons.location,
+      text: contacts.location
+    });
+
+    contactPanel.hidden = !(hasEmail || hasGithub || hasTelegram || hasLocation);
+  }
+
   // ----------------------------------------------------------
   // RENDER: Navigation
   // ----------------------------------------------------------
@@ -84,6 +171,8 @@
     }
 
     // Highlights
+    renderHeroContacts();
+
     const highlightsContainer = document.getElementById('hero-highlights');
     hero.highlights.forEach(h => {
       const div = el('div', 'hero__highlight');
@@ -123,7 +212,6 @@
     document.getElementById('skills-title').textContent = skills.title;
 
     const grid = document.getElementById('skills-grid');
-    grid.classList.add('reveal-children');
 
     skills.items.forEach(skill => {
       const card = el('div', 'skill-card');
@@ -139,30 +227,6 @@
   }
 
   // ----------------------------------------------------------
-  // RENDER: Achievements
-  // ----------------------------------------------------------
-  function renderAchievements() {
-    const { achievements } = siteData;
-    document.getElementById('achievements-title').textContent = achievements.title;
-
-    const list = document.getElementById('achievements-list');
-    list.classList.add('reveal-children');
-
-    achievements.items.forEach(item => {
-      const achievement = el('div', 'achievement');
-      achievement.innerHTML = `
-        <div class="achievement__year">${item.year}</div>
-        <div class="achievement__body">
-          <h3 class="achievement__title">${item.title}</h3>
-          <p class="achievement__desc">${item.description}</p>
-          ${item.result ? `<span class="achievement__result">${item.result}</span>` : ''}
-        </div>
-      `;
-      list.appendChild(achievement);
-    });
-  }
-
-  // ----------------------------------------------------------
   // RENDER: Projects
   // ----------------------------------------------------------
   function renderProjects() {
@@ -170,7 +234,6 @@
     document.getElementById('projects-title').textContent = projects.title;
 
     const list = document.getElementById('projects-list');
-    list.classList.add('reveal-children');
 
     projects.items.forEach(proj => {
       const project = el('div', 'project');
@@ -215,8 +278,6 @@
       grid.style.display = 'none';
       return;
     }
-
-    grid.classList.add('reveal-children');
 
     certificates.items.forEach(cert => {
       const card = document.createElement('button');
@@ -311,62 +372,6 @@
     certificateModal = { open, close };
   }
 
-  // ----------------------------------------------------------
-  // RENDER: Contacts
-  // ----------------------------------------------------------
-  function renderContacts() {
-    const { contacts } = siteData;
-    document.getElementById('contacts-title').textContent = contacts.title;
-
-    const content = document.getElementById('contacts-content');
-    const items = [];
-
-    if (contacts.email) {
-      items.push({
-        icon: icons.email,
-        label: 'Email',
-        value: `<a href="mailto:${contacts.email}">${contacts.email}</a>`
-      });
-    }
-
-    if (contacts.github) {
-      items.push({
-        icon: icons.github,
-        label: 'GitHub',
-        value: `<a href="${contacts.githubUrl}" target="_blank" rel="noopener">@${contacts.github}</a>`
-      });
-    }
-
-    if (contacts.telegram) {
-      items.push({
-        icon: icons.telegram,
-        label: 'Telegram',
-        value: `<a href="https://t.me/${contacts.telegram}" target="_blank" rel="noopener">@${contacts.telegram}</a>`
-      });
-    }
-
-    if (contacts.location) {
-      items.push({
-        icon: icons.location,
-        label: 'Местоположение',
-        value: contacts.location
-      });
-    }
-
-    items.forEach(item => {
-      const div = el('div', 'contact-item');
-      div.innerHTML = `
-        <div class="contact-item__icon">${item.icon}</div>
-        <div>
-          <div class="contact-item__label">${item.label}</div>
-          <div class="contact-item__value">${item.value}</div>
-        </div>
-      `;
-      content.appendChild(div);
-    });
-  }
-
-  // ----------------------------------------------------------
   // RENDER: Footer
   // ----------------------------------------------------------
   function renderFooter() {
@@ -383,10 +388,8 @@
     renderHero();
     renderAbout();
     renderSkills();
-    renderAchievements();
     renderProjects();
     renderCertificates();
-    renderContacts();
     renderFooter();
   }
 

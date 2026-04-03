@@ -82,7 +82,7 @@ function validateSiteData(siteData, htmlIds) {
     return;
   }
 
-  const requiredSections = ['hero', 'nav', 'about', 'skills', 'achievements', 'projects', 'certificates', 'contacts'];
+  const requiredSections = ['hero', 'nav', 'about', 'skills', 'projects', 'certificates', 'contacts'];
   for (const section of requiredSections) {
     if (!(section in siteData)) {
       addError(`В siteData отсутствует секция "${section}".`);

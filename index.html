@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Игорь Калинин — специалист по Data Science и Big Data Analytics. Анализ данных, прогнозные модели, машинное обучение.">
+  <meta name="description" content="Игорь Калинин — backend-разработчик и дата-аналитик. Анализ данных, прикладные сервисы, API и продуктовая логика.">
   <meta name="author" content="Игорь Калинин">
-  <meta property="og:title" content="Игорь Калинин — Data Science & Big Data Analytics">
-  <meta property="og:description" content="Персональный сайт-резюме. Анализ данных, прогнозные модели, машинное обучение.">
+  <meta property="og:title" content="Игорь Калинин — Backend Developer / Data Analyst">
+  <meta property="og:description" content="Персональный сайт-резюме. Backend-разработка, анализ данных, прикладные сервисы и продуктовая логика.">
   <meta property="og:type" content="website">
-  <title>Игорь Калинин — Data Science & Big Data Analytics</title>
+  <title>Игорь Калинин — Backend Developer / Data Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260403-hero">
 </head>
 <body>
 
@@ -34,6 +34,39 @@
         <p class="hero__greeting" id="hero-greeting"></p>
         <h1 class="hero__name" id="hero-name"></h1>
         <p class="hero__role" id="hero-role"></p>
+        <div class="hero__contact-panel" id="hero-contact-panel">
+          <p class="hero__contact-kicker" id="hero-contact-kicker"></p>
+          <div class="hero__contacts" id="hero-contacts">
+            <a class="hero__contact" id="hero-contact-email" hidden>
+              <span class="hero__contact-icon" id="hero-contact-email-icon" aria-hidden="true"></span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Email</span>
+                <span class="hero__contact-text" id="hero-contact-email-text"></span>
+              </span>
+            </a>
+            <a class="hero__contact" id="hero-contact-github" hidden>
+              <span class="hero__contact-icon" id="hero-contact-github-icon" aria-hidden="true"></span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">GitHub</span>
+                <span class="hero__contact-text" id="hero-contact-github-text"></span>
+              </span>
+            </a>
+            <a class="hero__contact" id="hero-contact-telegram" hidden>
+              <span class="hero__contact-icon" id="hero-contact-telegram-icon" aria-hidden="true"></span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Telegram</span>
+                <span class="hero__contact-text" id="hero-contact-telegram-text"></span>
+              </span>
+            </a>
+            <div class="hero__contact" id="hero-contact-location" hidden>
+              <span class="hero__contact-icon" id="hero-contact-location-icon" aria-hidden="true"></span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Местоположение</span>
+                <span class="hero__contact-text" id="hero-contact-location-text"></span>
+              </span>
+            </div>
+          </div>
+        </div>
         <p class="hero__tagline" id="hero-tagline"></p>
         <div class="hero__highlights" id="hero-highlights"></div>
       </div>
@@ -62,14 +95,6 @@
       </div>
     </section>
 
-    <!-- ====== ДОСТИЖЕНИЯ ====== -->
-    <section class="section" id="achievements">
-      <div class="section__inner">
-        <h2 class="section__title" id="achievements-title"></h2>
-        <div class="section__content achievements__list" id="achievements-list"></div>
-      </div>
-    </section>
-
     <!-- ====== ПРОЕКТЫ ====== -->
     <section class="section section--alt" id="projects">
       <div class="section__inner">
@@ -86,14 +111,6 @@
         <p class="certificates__empty" id="certificates-empty" style="display:none;">Раздел будет дополнен.</p>
       </div>
     </section>
-
-    <!-- ====== КОНТАКТЫ ====== -->
-    <section class="section section--contacts" id="contacts">
-      <div class="section__inner">
-        <h2 class="section__title" id="contacts-title"></h2>
-        <div class="section__content contacts__content" id="contacts-content"></div>
-      </div>
-    </section>
   </main>
 
   <!-- ====== FOOTER ====== -->
@@ -103,7 +120,7 @@
     </div>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="data.js?v=20260403-hero"></script>
+  <script src="app.js?v=20260403-hero"></script>
 </body>
 </html>

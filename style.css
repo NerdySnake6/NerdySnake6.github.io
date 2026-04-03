@@ -259,6 +259,89 @@ img {
   margin-bottom: var(--space-2xl);
 }
 
+.hero__contact-panel {
+  margin-bottom: var(--space-xl);
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(67, 56, 202, 0.2);
+  border-left: 4px solid var(--accent);
+  background: #ffffff;
+  box-shadow: var(--shadow-md);
+  max-width: 520px;
+}
+
+.hero__contact-kicker {
+  font-size: var(--fs-xs);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.hero__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero__contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: auto;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text-secondary);
+}
+
+.hero__contact:hover {
+  color: var(--text-primary);
+  transform: none;
+}
+
+.hero__contact-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.hero__contact-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero__contact-body {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.hero__contact-label {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hero__contact-text {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
 .hero__highlights {
   display: flex;
   gap: var(--space-lg);
@@ -594,6 +677,15 @@ img {
   line-height: 1.7;
 }
 
+.project__result-text a {
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.project__result-text a:hover {
+  color: var(--accent);
+}
+
 /* ----------------------------------------------------------
    CERTIFICATES
    ---------------------------------------------------------- */
@@ -754,78 +846,6 @@ img {
 }
 
 /* ----------------------------------------------------------
-   CONTACTS
-   ---------------------------------------------------------- */
-.section--contacts {
-  background: var(--text-primary);
-}
-
-.section--contacts .section__title {
-  color: #ffffff;
-}
-
-.section--contacts .section__title::before {
-  background: var(--teal-soft);
-}
-
-.contacts__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.contact-item__icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.contact-item__icon svg {
-  width: 20px;
-  height: 20px;
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.7);
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.contact-item__label {
-  font-size: var(--fs-xs);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 2px;
-}
-
-.contact-item__value {
-  font-size: var(--fs-md);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.contact-item__value a {
-  color: rgba(255, 255, 255, 0.9);
-  transition: color var(--duration) var(--ease);
-}
-
-.contact-item__value a:hover {
-  color: #ffffff;
-}
-
-/* ----------------------------------------------------------
    FOOTER
    ---------------------------------------------------------- */
 .footer {
@@ -846,18 +866,8 @@ img {
 }
 
 /* ----------------------------------------------------------
-   ANIMATIONS — Scroll reveal
+   ANIMATIONS — Hero
    ---------------------------------------------------------- */
-.reveal,
-.reveal--visible,
-.reveal-children > *,
-.reveal-children--visible > * {
-  opacity: 1;
-  transform: none;
-  transition: none;
-}
-
-/* Hero specific animations */
 .hero__content {
   opacity: 0;
   transform: translateX(-24px);
@@ -953,6 +963,10 @@ img {
     justify-content: center;
   }
 
+  .hero__contacts {
+    text-align: left;
+  }
+
   .hero__photo {
     width: 160px;
     height: 160px;
@@ -1007,6 +1021,18 @@ img {
     align-items: center;
   }
 
+  .hero__contacts {
+    align-items: stretch;
+  }
+
+  .hero__contact {
+    justify-content: center;
+  }
+
+  .hero__contact-body {
+    justify-content: center;
+  }
+
   .hero__highlight {
     align-items: center;
     text-align: center;
@@ -1048,8 +1074,4 @@ img {
     font-size: var(--fs-xs);
   }
 
-  .contact-item__value {
-    font-size: var(--fs-base);
-    word-break: break-all;
-  }
 }
