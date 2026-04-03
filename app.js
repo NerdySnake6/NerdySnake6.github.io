@@ -152,6 +152,12 @@
     document.getElementById('hero-greeting').textContent = 'Здравствуйте, меня зовут';
     document.getElementById('hero-name').textContent = hero.name;
     document.getElementById('hero-role').textContent = hero.role;
+    const educationElement = document.getElementById('hero-education');
+    const educationLineElement = document.getElementById('hero-education-line');
+    const educationProfileElement = document.getElementById('hero-education-profile');
+    educationLineElement.textContent = hero.educationLine || '';
+    educationProfileElement.textContent = hero.educationProfile || '';
+    educationElement.hidden = !(hero.educationLine || hero.educationProfile);
     document.getElementById('hero-tagline').textContent = hero.tagline;
 
     // Initials for placeholder

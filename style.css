@@ -248,8 +248,29 @@ img {
   font-size: var(--fs-xl);
   font-weight: 500;
   color: var(--teal);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-sm);
   letter-spacing: -0.01em;
+}
+
+.hero__education {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-width: 620px;
+  margin-bottom: var(--space-lg);
+}
+
+.hero__education-line {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.hero__education-profile {
+  font-size: var(--fs-sm);
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .hero__tagline {
