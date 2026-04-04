@@ -423,12 +423,30 @@ img {
    ---------------------------------------------------------- */
 .section {
   padding: var(--space-4xl) var(--space-lg);
-  content-visibility: auto;
-  contain-intrinsic-size: 700px;
 }
 
 .section--alt {
   background: var(--bg-secondary);
+}
+
+#projects.section {
+  padding-top: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+}
+
+#skills.section {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+#about.section {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-2xl);
+}
+
+#certificates.section {
+  padding-top: var(--space-2xl);
+  padding-bottom: var(--space-3xl);
 }
 
 .section__inner {
