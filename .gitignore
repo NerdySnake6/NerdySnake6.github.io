@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Local analysis tools
+.serena/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

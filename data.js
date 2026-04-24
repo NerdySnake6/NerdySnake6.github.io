@@ -128,6 +128,13 @@ const siteData = {
         tools: ["Python", "Flask", "Flask-WTF", "Flask-Login", "Flask-SQLAlchemy", "pandas", "requests", "openpyxl", "MOEX ISS", "SQLite", "PostgreSQL"],
         work: "Реализовал backend-логику сервиса подбора облигационного портфеля: загрузку данных MOEX, очистку и нормализацию выпусков, расчет параметров бумаг и фильтрацию по сроку, ликвидности и бюджету пользователя. Отвечал за аналитическую часть и основной backend. Фронтенд и подключение БД выполнялись совместно с напарником.",
         result: "Коммерческий проект в приватном репозитории. При необходимости готов поделиться кодом, архитектурой и деталями реализации по запросу."
+      },
+      {
+        title: "Классификатор поисковых медиазапросов — ML-пайплайн для Mediascope",
+        task: "Хакатонный ML-проект для классификации шумных пользовательских поисковых запросов по полям TypeQuery, Title и ContentType. Решение определяет, относится ли запрос к профессиональному видеоконтенту, нормализует название или франшизу и предсказывает тип контента: фильм, сериал, мультфильм, мультсериал и другие категории.",
+        tools: ["Python", "pandas", "NumPy", "scikit-learn", "rapidfuzz", "SciPy", "pymorphy3", "Retrieval", "Embeddings"],
+        work: "Работал над финальной интеграцией ML-пайплайна: дорабатывал инференс, стабилизировал решение, готовил артефакты модели и собирал конкурирующие сигналы в итоговый ответ. В проекте использовались словарный матчинг, retrieval, embedding-based matching, графовые признаки и калибровка предсказаний.",
+        result: "Командный хакатонный проект, занявший 3 место в AI Business SPB. Репозиторий: <a href=\"https://github.com/NerdySnake6/AI_hackathon_ML_model\" target=\"_blank\" rel=\"noopener\">github.com/NerdySnake6/AI_hackathon_ML_model</a>"
       }
     ]
   },
@@ -152,6 +159,12 @@ const siteData = {
         issuer: "BRAIM / IT-Планета",
         year: "2026",
         image: "assets/certificates/braim-if-else.png"
+      },
+      {
+        title: "AI Business SPB — 3 место",
+        issuer: "Yandex AI Studio / ИТ-Диалог",
+        year: "2026",
+        image: "assets/certificates/ai-business-spb-prize.png"
       }
     ]
   },
