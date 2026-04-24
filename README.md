@@ -1,4 +1,4 @@
-# Игорь Калинин — Portfolio
+# Игорь Калинин: Portfolio
 
 Персональный сайт-портфолио backend-разработчика и дата-аналитика.
 
@@ -46,13 +46,13 @@ my-portfolio/
 └── README.md
 ```
 
-- `index.html` — структура страницы
-- `style.css` — стили интерфейса
-- `app.js` — логика рендеринга
-- `data.js` — контент сайта
-- `assets/` — изображения профиля и сертификатов
-- `.github/workflows/pages.yml` — CI и деплой в GitHub Pages
-- `scripts/validate-site.mjs` — проверка структуры сайта
+- `index.html` - структура страницы
+- `style.css` - стили интерфейса
+- `app.js` - логика рендеринга
+- `data.js` - контент сайта
+- `assets/` - изображения профиля и сертификатов
+- `.github/workflows/pages.yml` - CI и деплой в GitHub Pages
+- `scripts/validate-site.mjs` - проверка структуры сайта
 
 ## Локальный запуск
 

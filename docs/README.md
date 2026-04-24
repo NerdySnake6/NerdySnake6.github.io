@@ -29,18 +29,18 @@ my-portfolio/
 
 Основной контент редактируется в `data.js`.
 
-- `hero` — первый экран
-- `about` — блок "Обо мне"
-- `skills` — навыки
-- `achievements` — достижения
-- `projects` — проекты
-- `certificates` — сертификаты
-- `contacts` — контакты
+- `hero` - первый экран
+- `about` - блок "Обо мне"
+- `skills` - навыки
+- `achievements` - достижения
+- `projects` - проекты
+- `certificates` - сертификаты
+- `contacts` - контакты
 
 ## Ассеты
 
-- `assets/photo.jpg` — фото профиля
-- `assets/certificates/` — изображения сертификатов
+- `assets/photo.jpg` - фото профиля
+- `assets/certificates/` - изображения сертификатов
 
 ## Публикация
 
