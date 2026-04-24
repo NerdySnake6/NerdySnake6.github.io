@@ -116,11 +116,27 @@ const siteData = {
     title: "Проекты",
     items: [
       {
+        title: "Классификатор поисковых медиазапросов — ML-пайплайн для Mediascope",
+        badge: "3 место в AI Business SPB",
+        task: "Хакатонный ML-проект для классификации шумных пользовательских поисковых запросов по полям TypeQuery, Title и ContentType. Решение определяет, относится ли запрос к профессиональному видеоконтенту, нормализует название или франшизу и предсказывает тип контента: фильм, сериал, мультфильм, мультсериал и другие категории.",
+        tools: ["Python", "pandas", "NumPy", "scikit-learn", "rapidfuzz", "SciPy", "pymorphy3"],
+        work: "Работал над финальной интеграцией ML-пайплайна: дорабатывал инференс, стабилизировал решение, готовил артефакты модели и собирал конкурирующие сигналы в итоговый ответ. В проекте использовались словарный матчинг, retrieval, embedding-based matching, графовые признаки и калибровка предсказаний.",
+        result: "Командный хакатонный проект, занявший 3 место в AI Business SPB. Репозиторий:",
+        link: {
+          label: "github.com/NerdySnake6/AI_hackathon_ML_model",
+          href: "https://github.com/NerdySnake6/AI_hackathon_ML_model"
+        }
+      },
+      {
         title: "Трамплин — карьерная платформа для вакансий и стажировок",
         task: "Интерактивная карьерная платформа для студентов, выпускников, работодателей, кураторов и администратора. Проект объединяет карту возможностей, единую ленту вакансий, стажировок, событий и менторских программ, а также ролевую модель с разными сценариями для пользователей платформы. Для отображения возможностей на карте была интегрирована Яндекс Карта через API.",
         tools: ["FastAPI", "SQLAlchemy", "Alembic", "SQLite", "JavaScript", "Node.js", "Vite", "Bootstrap", "JWT", "Yandex Maps API"],
         work: "Разработал backend и большую часть frontend-части карьерной платформы. Реализовал JWT-авторизацию, ролевую модель с 4 типами пользователей, разграничение прав доступа, работу с БД и Alembic-миграциями. Интегрировал Yandex Maps API для отображения карьерных возможностей на карте. Провел тестирование основных пользовательских сценариев и подготовил демонстрацию проекта.",
-        result: "Проект доведен до полноценной демонстрации как рабочая карьерная площадка с картой и лентой возможностей. Репозиторий: <a href=\"https://github.com/NerdySnake6/if-else-hackathon-2026\" target=\"_blank\" rel=\"noopener\">github.com/NerdySnake6/if-else-hackathon-2026</a>"
+        result: "Проект доведен до полноценной демонстрации как рабочая карьерная площадка с картой и лентой возможностей. Репозиторий:",
+        link: {
+          label: "github.com/NerdySnake6/if-else-hackathon-2026",
+          href: "https://github.com/NerdySnake6/if-else-hackathon-2026"
+        }
       },
       {
         title: "BondLadder — подбор портфеля облигаций Московской биржи",
@@ -128,13 +144,6 @@ const siteData = {
         tools: ["Python", "Flask", "Flask-WTF", "Flask-Login", "Flask-SQLAlchemy", "pandas", "requests", "openpyxl", "MOEX ISS", "SQLite", "PostgreSQL"],
         work: "Реализовал backend-логику сервиса подбора облигационного портфеля: загрузку данных MOEX, очистку и нормализацию выпусков, расчет параметров бумаг и фильтрацию по сроку, ликвидности и бюджету пользователя. Отвечал за аналитическую часть и основной backend. Фронтенд и подключение БД выполнялись совместно с напарником.",
         result: "Коммерческий проект в приватном репозитории. При необходимости готов поделиться кодом, архитектурой и деталями реализации по запросу."
-      },
-      {
-        title: "Классификатор поисковых медиазапросов — ML-пайплайн для Mediascope",
-        task: "Хакатонный ML-проект для классификации шумных пользовательских поисковых запросов по полям TypeQuery, Title и ContentType. Решение определяет, относится ли запрос к профессиональному видеоконтенту, нормализует название или франшизу и предсказывает тип контента: фильм, сериал, мультфильм, мультсериал и другие категории.",
-        tools: ["Python", "pandas", "NumPy", "scikit-learn", "rapidfuzz", "SciPy", "pymorphy3", "Retrieval", "Embeddings"],
-        work: "Работал над финальной интеграцией ML-пайплайна: дорабатывал инференс, стабилизировал решение, готовил артефакты модели и собирал конкурирующие сигналы в итоговый ответ. В проекте использовались словарный матчинг, retrieval, embedding-based matching, графовые признаки и калибровка предсказаний.",
-        result: "Командный хакатонный проект, занявший 3 место в AI Business SPB. Репозиторий: <a href=\"https://github.com/NerdySnake6/AI_hackathon_ML_model\" target=\"_blank\" rel=\"noopener\">github.com/NerdySnake6/AI_hackathon_ML_model</a>"
       }
     ]
   },
@@ -149,6 +158,12 @@ const siteData = {
     title: "Сертификаты",
     items: [
       {
+        title: "AI Business SPB — 3 место",
+        issuer: "Yandex AI Studio / ИТ-Диалог",
+        year: "2026",
+        image: "assets/certificates/ai-business-spb-prize.png"
+      },
+      {
         title: "СУБД Postgres Pro",
         issuer: "BRAIM / IT-Планета",
         year: "2026",
@@ -159,12 +174,6 @@ const siteData = {
         issuer: "BRAIM / IT-Планета",
         year: "2026",
         image: "assets/certificates/braim-if-else.png"
-      },
-      {
-        title: "AI Business SPB — 3 место",
-        issuer: "Yandex AI Studio / ИТ-Диалог",
-        year: "2026",
-        image: "assets/certificates/ai-business-spb-prize.png"
       }
     ]
   },

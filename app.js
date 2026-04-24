@@ -28,6 +28,26 @@
     return e;
   }
 
+  function appendTextElement(parent, tag, className, text) {
+    const element = el(tag, className);
+    element.textContent = text || '';
+    parent.appendChild(element);
+    return element;
+  }
+
+  function appendExternalLink(parent, link) {
+    if (!link || !link.href || !link.label) return null;
+
+    parent.appendChild(document.createTextNode(' '));
+    const anchor = document.createElement('a');
+    anchor.href = link.href;
+    anchor.textContent = link.label;
+    anchor.target = '_blank';
+    anchor.rel = 'noopener';
+    parent.appendChild(anchor);
+    return anchor;
+  }
+
   function setHeroContactLink(options) {
     const { elementId, iconId, textId, icon, text, href, external } = options;
     const element = document.getElementById(elementId);
@@ -123,23 +143,47 @@
     document.getElementById('nav-logo').textContent = hero.name.split(' ')[0];
 
     const linksList = document.getElementById('nav-links');
+    const mobileNavQuery = window.matchMedia('(max-width: 768px)');
+
+    function syncNavState() {
+      const isOpen = linksList.classList.contains('nav__links--open');
+      const shouldHideLinks = mobileNavQuery.matches && !isOpen;
+
+      linksList.inert = shouldHideLinks;
+      linksList.setAttribute('aria-hidden', shouldHideLinks ? 'true' : 'false');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function closeMobileNav() {
+      linksList.classList.remove('nav__links--open');
+      syncNavState();
+    }
+
     nav.forEach(item => {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.href = item.href;
       a.textContent = item.label;
-      a.addEventListener('click', () => {
-        document.getElementById('nav-links').classList.remove('nav__links--open');
-      });
+      a.addEventListener('click', closeMobileNav);
       li.appendChild(a);
       linksList.appendChild(li);
     });
 
     // Mobile toggle
     const toggle = document.getElementById('nav-toggle');
+    toggle.setAttribute('aria-controls', 'nav-links');
+    toggle.setAttribute('aria-expanded', 'false');
     toggle.addEventListener('click', () => {
       linksList.classList.toggle('nav__links--open');
+      syncNavState();
     });
+
+    if (typeof mobileNavQuery.addEventListener === 'function') {
+      mobileNavQuery.addEventListener('change', syncNavState);
+    } else {
+      mobileNavQuery.addListener(syncNavState);
+    }
+    syncNavState();
 
   }
 
@@ -182,10 +226,8 @@
     const highlightsContainer = document.getElementById('hero-highlights');
     hero.highlights.forEach(h => {
       const div = el('div', 'hero__highlight');
-      div.innerHTML = `
-        <span class="hero__highlight-label">${h.label}</span>
-        <span class="hero__highlight-desc">${h.description}</span>
-      `;
+      appendTextElement(div, 'span', 'hero__highlight-label', h.label);
+      appendTextElement(div, 'span', 'hero__highlight-desc', h.description);
       highlightsContainer.appendChild(div);
     });
 
@@ -221,13 +263,15 @@
 
     skills.items.forEach(skill => {
       const card = el('div', 'skill-card');
-      card.innerHTML = `
-        <div class="skill-card__category">${skill.category}</div>
-        <div class="skill-card__techs">
-          ${skill.technologies.map(t => `<span class="skill-card__tech">${t}</span>`).join('')}
-        </div>
-        <p class="skill-card__desc">${skill.description}</p>
-      `;
+      appendTextElement(card, 'div', 'skill-card__category', skill.category);
+
+      const techs = el('div', 'skill-card__techs');
+      skill.technologies.forEach(technology => {
+        appendTextElement(techs, 'span', 'skill-card__tech', technology);
+      });
+      card.appendChild(techs);
+
+      appendTextElement(card, 'p', 'skill-card__desc', skill.description);
       grid.appendChild(card);
     });
   }
@@ -243,28 +287,41 @@
 
     projects.items.forEach(proj => {
       const project = el('div', 'project');
-      project.innerHTML = `
-        <div class="project__header">
-          <h3 class="project__title">${proj.title}</h3>
-          <p class="project__task">${proj.task}</p>
-        </div>
-        <div class="project__details">
-          <div>
-            <div class="project__detail-label">Инструменты</div>
-            <div class="project__tools">
-              ${proj.tools.map(t => `<span class="project__tool">${t}</span>`).join('')}
-            </div>
-          </div>
-          <div>
-            <div class="project__detail-label">Что сделано</div>
-            <p class="project__detail-value">${proj.work}</p>
-          </div>
-        </div>
-        <div class="project__result">
-          <span class="project__result-icon">→</span>
-          <p class="project__result-text">${proj.result}</p>
-        </div>
-      `;
+
+      const header = el('div', 'project__header');
+      if (proj.badge) {
+        appendTextElement(header, 'div', 'project__badge', proj.badge);
+      }
+      appendTextElement(header, 'h3', 'project__title', proj.title);
+      appendTextElement(header, 'p', 'project__task', proj.task);
+      project.appendChild(header);
+
+      const details = el('div', 'project__details');
+      const toolsDetail = document.createElement('div');
+      appendTextElement(toolsDetail, 'div', 'project__detail-label', 'Инструменты');
+
+      const tools = el('div', 'project__tools');
+      proj.tools.forEach(tool => {
+        appendTextElement(tools, 'span', 'project__tool', tool);
+      });
+      toolsDetail.appendChild(tools);
+      details.appendChild(toolsDetail);
+
+      const workDetail = document.createElement('div');
+      appendTextElement(workDetail, 'div', 'project__detail-label', 'Что сделано');
+      appendTextElement(workDetail, 'p', 'project__detail-value', proj.work);
+      details.appendChild(workDetail);
+      project.appendChild(details);
+
+      const result = el('div', 'project__result');
+      appendTextElement(result, 'span', 'project__result-icon', '→');
+
+      const resultText = el('p', 'project__result-text');
+      resultText.textContent = proj.result || '';
+      appendExternalLink(resultText, proj.link);
+      result.appendChild(resultText);
+      project.appendChild(result);
+
       list.appendChild(project);
     });
   }
@@ -290,15 +347,21 @@
       card.type = 'button';
       card.className = 'certificate';
       card.setAttribute('aria-label', `Открыть сертификат: ${cert.title}`);
-      card.innerHTML = `
-        <div class="certificate__image">
-          ${cert.image ? `<img src="${cert.image}" alt="${cert.title}">` : ''}
-        </div>
-        <div class="certificate__info">
-          <div class="certificate__title">${cert.title}</div>
-          <div class="certificate__meta">${cert.issuer || ''}${cert.year ? ' · ' + cert.year : ''}</div>
-        </div>
-      `;
+
+      const imageContainer = el('div', 'certificate__image');
+      if (cert.image) {
+        const image = document.createElement('img');
+        image.src = cert.image;
+        image.alt = cert.title;
+        imageContainer.appendChild(image);
+      }
+      card.appendChild(imageContainer);
+
+      const info = el('div', 'certificate__info');
+      appendTextElement(info, 'div', 'certificate__title', cert.title);
+      appendTextElement(info, 'div', 'certificate__meta', `${cert.issuer || ''}${cert.year ? ' · ' + cert.year : ''}`);
+      card.appendChild(info);
+
       card.addEventListener('click', () => {
         if (certificateModal) {
           certificateModal.open(cert);
@@ -333,11 +396,74 @@
     const image = modal.querySelector('.certificate-modal__image');
     const title = modal.querySelector('.certificate-modal__title');
     const meta = modal.querySelector('.certificate-modal__meta');
+    const focusableSelector = [
+      'a[href]',
+      'button:not([disabled])',
+      'input:not([disabled])',
+      'select:not([disabled])',
+      'textarea:not([disabled])',
+      '[tabindex]:not([tabindex="-1"])'
+    ].join(',');
     let lastFocusedElement = null;
+    let hiddenBackgroundElements = [];
+
+    function setBackgroundInert(isInert) {
+      if (isInert) {
+        hiddenBackgroundElements = [...document.body.children]
+          .filter(child => child !== modal && child.tagName !== 'SCRIPT')
+          .map(element => ({
+            element,
+            ariaHidden: element.getAttribute('aria-hidden'),
+            inert: element.inert
+          }));
+
+        hiddenBackgroundElements.forEach(({ element }) => {
+          element.inert = true;
+          element.setAttribute('aria-hidden', 'true');
+        });
+        return;
+      }
+
+      hiddenBackgroundElements.forEach(({ element, ariaHidden, inert }) => {
+        element.inert = inert;
+        if (ariaHidden === null) {
+          element.removeAttribute('aria-hidden');
+        } else {
+          element.setAttribute('aria-hidden', ariaHidden);
+        }
+      });
+      hiddenBackgroundElements = [];
+    }
+
+    function trapFocus(event) {
+      if (event.key !== 'Tab' || !modal.classList.contains('certificate-modal--open')) {
+        return;
+      }
+
+      const focusableElements = [...modal.querySelectorAll(focusableSelector)]
+        .filter(element => element.offsetParent !== null);
+
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    }
 
     function close() {
       modal.classList.remove('certificate-modal--open');
       document.body.classList.remove('modal-open');
+      setBackgroundInert(false);
       modal.setAttribute('hidden', '');
       image.removeAttribute('src');
 
@@ -354,6 +480,7 @@
       image.alt = cert.title || 'Сертификат';
       modal.removeAttribute('hidden');
       document.body.classList.add('modal-open');
+      setBackgroundInert(true);
 
       requestAnimationFrame(() => {
         modal.classList.add('certificate-modal--open');
@@ -373,6 +500,8 @@
       if (event.key === 'Escape' && modal.classList.contains('certificate-modal--open')) {
         close();
       }
+
+      trapFocus(event);
     });
 
     certificateModal = { open, close };
