@@ -16,7 +16,7 @@ const siteData = {
     educationProfile: "Профиль: Технологии разработки программного обеспечения и обработки больших данных",
     tagline: "Разрабатываю backend-сервисы и приложения для работы с данными: интегрирую API, автоматизирую сценарии, проектирую бизнес-логику и превращаю данные в понятные инструменты для пользователей и команд.",
     // Путь к фото (положите файл в папку assets/)
-    photo: "assets/photo.jpg",
+    photo: "assets/photo-cropped-20260425.jpg",
     // Краткие факты - отображаются под описанием
     highlights: [
       { label: "Python & ML", description: "Анализ данных и машинное обучение" },
@@ -187,6 +187,7 @@ const siteData = {
     github: "NerdySnake6",
     githubUrl: "https://github.com/NerdySnake6",
     telegram: "nerdysnake6",
+    phone: "+79215850922",
     location: "Россия, Санкт-Петербург"
   }
 
