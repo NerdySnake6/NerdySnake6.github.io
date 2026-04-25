@@ -334,9 +334,10 @@ img {
 }
 
 .hero__contact {
-  display: flex;
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
   align-items: center;
-  gap: var(--space-sm);
+  column-gap: var(--space-sm);
   min-height: auto;
   padding: 0;
   border-radius: 0;
@@ -352,18 +353,18 @@ img {
 }
 
 .hero__contact-icon {
-  width: 20px;
-  height: 20px;
+  width: 32px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .hero__contact-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   fill: none;
   stroke: var(--accent);
   stroke-width: 2;
@@ -371,23 +372,36 @@ img {
   stroke-linejoin: round;
 }
 
+#hero-contact-github-icon svg,
+#hero-contact-phone-icon svg,
+#hero-contact-location-icon svg {
+  transform: translateX(-1px);
+}
+
+#hero-contact-telegram-icon svg {
+  transform: translateX(-3px);
+}
+
 .hero__contact-body {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 6px;
+  min-width: 0;
 }
 
 .hero__contact-label {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 700;
   color: var(--text-primary);
+  line-height: 1.4;
 }
 
 .hero__contact-text {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-base);
   font-weight: 500;
   color: var(--text-secondary);
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
 
@@ -753,14 +767,18 @@ img {
 }
 
 .project__result-text {
+  min-width: 0;
   font-size: var(--fs-sm);
   color: var(--text-secondary);
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .project__result-text a {
   color: var(--accent-text);
   font-weight: 600;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .project__result-text a:hover {
@@ -1121,7 +1139,7 @@ img {
   }
 
   .hero__contact {
-    justify-content: flex-start;
+    grid-template-columns: 32px minmax(0, 1fr);
   }
 
   .hero__contact-body {
