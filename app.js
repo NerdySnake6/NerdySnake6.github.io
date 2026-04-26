@@ -335,7 +335,24 @@
         appendExternalLink(resultText, proj.link);
       }
       if (proj.links && Array.isArray(proj.links)) {
-        proj.links.forEach(linkObj => appendExternalLink(resultText, linkObj));
+        proj.links.forEach((linkObj, index) => {
+          if (index > 0) {
+            const sep = document.createElement('span');
+            sep.textContent = ' • ';
+            sep.style.color = 'var(--text-tertiary)';
+            sep.style.margin = '0 6px';
+            resultText.appendChild(sep);
+          } else if (resultText.textContent.trim().length > 0) {
+            resultText.appendChild(document.createTextNode(' '));
+          }
+          
+          const anchor = document.createElement('a');
+          anchor.href = linkObj.href;
+          anchor.textContent = linkObj.label;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener';
+          resultText.appendChild(anchor);
+        });
       }
       
       result.appendChild(resultText);
