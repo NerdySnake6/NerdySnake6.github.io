@@ -330,7 +330,14 @@
 
       const resultText = el('p', 'project__result-text');
       resultText.textContent = proj.result || '';
-      appendExternalLink(resultText, proj.link);
+      
+      if (proj.link) {
+        appendExternalLink(resultText, proj.link);
+      }
+      if (proj.links && Array.isArray(proj.links)) {
+        proj.links.forEach(linkObj => appendExternalLink(resultText, linkObj));
+      }
+      
       result.appendChild(resultText);
       project.appendChild(result);
 
