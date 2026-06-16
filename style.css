@@ -789,9 +789,32 @@ img {
    CERTIFICATES
    ---------------------------------------------------------- */
 .certificates__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: var(--space-lg);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--space-sm);
+  scroll-padding-inline: var(--space-xs);
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--accent-soft) transparent;
+  scrollbar-width: thin;
+}
+
+.certificates__grid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.certificates__grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.certificates__grid::-webkit-scrollbar-thumb {
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.certificates__grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(67, 56, 202, 0.3);
 }
 
 .certificate {
@@ -807,6 +830,8 @@ img {
   font: inherit;
   cursor: pointer;
   appearance: none;
+  flex: 0 0 calc((100% - var(--space-lg) - var(--space-lg)) / 3);
+  scroll-snap-align: start;
 }
 
 .certificate:hover,
@@ -1093,7 +1118,11 @@ img {
 
   /* Certificates */
   .certificates__grid {
-    grid-template-columns: 1fr 1fr;
+    scroll-padding-inline: 0;
+  }
+
+  .certificate {
+    flex-basis: calc((100% - var(--space-lg)) / 2);
   }
 
   /* Achievements */
@@ -1175,7 +1204,11 @@ img {
   }
 
   .certificates__grid {
-    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .certificate {
+    flex-basis: 100%;
   }
 
   .certificate__image {

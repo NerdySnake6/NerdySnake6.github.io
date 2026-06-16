@@ -128,11 +128,12 @@ const siteData = {
         }
       },
       {
-        title: "Трамплин: карьерная платформа для вакансий и стажировок",
-        task: "Трамплин — MVP карьерной платформы, которая объединяет студентов, работодателей и кураторов в единой экосистеме. Вместо скучных списков проект предлагает интерактивную карту возможностей (интеграция Яндекс Карт) и общую ленту вакансий, стажировок и менторских программ. Под капотом реализована сложная ролевая модель, где каждый из 4 типов пользователей получает свой уникальный сценарий работы.",
-        tools: ["FastAPI", "SQLAlchemy", "Alembic", "SQLite", "JavaScript", "Node.js", "Vite", "Bootstrap", "JWT", "Yandex Maps API"],
-        work: "Разработал backend и большую часть frontend-части карьерной платформы. Реализовал JWT-авторизацию, ролевую модель с 4 типами пользователей, разграничение прав доступа, работу с БД и Alembic-миграциями. Интегрировал Yandex Maps API для отображения карьерных возможностей на карте. Провел тестирование основных пользовательских сценариев и подготовил демонстрацию проекта.",
-        result: "Проект доведен до полноценной рабочей демонстрации с картой и лентой возможностей. Ссылки:",
+        title: "Трамплин: AI-карьерная платформа для студентов и работодателей",
+        badge: "2 место в финале if...else 2026",
+        task: "Трамплин — интерактивная карьерная платформа для студентов, выпускников, работодателей, кураторов и администратора. Сервис объединяет карту и ленту возможностей с фильтрами по типу, формату, локации и вознаграждению, поддерживает отклики, сопроводительные письма, нетворкинг между студентами и отдельные рабочие сценарии для каждой роли.",
+        tools: ["FastAPI", "SQLAlchemy", "Alembic", "PostgreSQL", "JavaScript", "Vite", "Bootstrap", "JWT", "Docker", "Yandex Maps API", "Yandex Geocoder", "Polza.ai API"],
+        work: "Разработал backend и значительную часть frontend-логики: JWT-авторизацию, ролевую модель applicant/employer/curator/admin, отклики и статусы, работу с PostgreSQL и Alembic-миграциями, геокодирование и карту возможностей. Подключил AI-сценарии через Polza.ai: улучшение описаний вакансий, подбор тегов, генерацию черновиков сопроводительных писем и AI-проверку рисков для куратора. Настроил двухуровневую модерацию с rule-based фильтром, AI-чеклистом и ограничениями для новых работодателей.",
+        result: "Проект занял 2 место в финале if...else 2026. Внутри реализовано много прикладных технических решений: ролевая модель, модерация рисков, карта возможностей, PostgreSQL-хранилище, Docker-деплой, техническое SEO с sitemap, robots, canonical URL и мета-тегами, а также полный цикл AI-интеграций для работодателя, соискателя и куратора. Ссылки:",
         links: [
           {
             label: "Открыть сайт",
@@ -140,7 +141,7 @@ const siteData = {
           },
           {
             label: "GitHub",
-            href: "https://github.com/NerdySnake6/if-else-hackathon-2026"
+            href: "https://github.com/NerdySnake6/Tramplin-ai-career-platform"
           }
         ]
       },
@@ -164,6 +165,24 @@ const siteData = {
     title: "Сертификаты",
     items: [
       {
+        title: "Прикладное программирование if...else: 2 место",
+        issuer: "BRAIM / IT-Планета",
+        year: "2026",
+        image: "assets/certificates/braim-if-else-final-2-place.webp"
+      },
+      {
+        title: "Lenta Tech Life Hack",
+        issuer: "Lenta Tech / Changellenge",
+        year: "2026",
+        image: "assets/certificates/lenta-tech-life-hack.webp"
+      },
+      {
+        title: "Интерактивный тренажер по SQL",
+        issuer: "Stepik / ДВФУ",
+        year: "2026",
+        image: "assets/certificates/stepik-sql-trainer.webp"
+      },
+      {
         title: "AI Business SPB: 3 место",
         issuer: "Yandex AI Studio / ИТ-Диалог",
         year: "2026",
@@ -174,12 +193,6 @@ const siteData = {
         issuer: "BRAIM / IT-Планета",
         year: "2026",
         image: "assets/certificates/braim-postgres-pro.png"
-      },
-      {
-        title: "Прикладное программирование if...else",
-        issuer: "BRAIM / IT-Планета",
-        year: "2026",
-        image: "assets/certificates/braim-if-else.png"
       }
     ]
   },
@@ -189,7 +202,7 @@ const siteData = {
   // ----------------------------------------------------------
   contacts: {
     title: "Контакты",
-    email: "mail10102005@gmail.com",
+    email: "nerdysnake@yandex.ru",
     github: "NerdySnake6",
     githubUrl: "https://github.com/NerdySnake6",
     telegram: "nerdysnake6",

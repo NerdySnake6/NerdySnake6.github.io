@@ -11,8 +11,12 @@ my-portfolio/
 │       └── pages.yml
 ├── assets/
 │   ├── certificates/
-│   │   ├── braim-if-else.png
-│   │   └── braim-postgres-pro.png
+│   │   ├── ai-business-spb-prize.png
+│   │   ├── braim-if-else-final-2-place.webp
+│   │   ├── lenta-tech-life-hack.webp
+│   │   ├── braim-postgres-pro.png
+│   │   └── stepik-sql-trainer.webp
+│   ├── photo-cropped-20260425.jpg
 │   └── photo.jpg
 ├── docs/
 │   └── README.md
@@ -39,7 +43,7 @@ my-portfolio/
 
 ## Ассеты
 
-- `assets/photo.jpg` - фото профиля
+- `assets/photo-cropped-20260425.jpg` - основное фото профиля на сайте
 - `assets/certificates/` - изображения сертификатов
 
 ## Публикация

@@ -34,6 +34,7 @@ my-portfolio/
 │       └── pages.yml
 ├── assets/
 │   ├── certificates/
+│   ├── photo-cropped-20260425.jpg
 │   └── photo.jpg
 ├── docs/
 │   └── README.md
@@ -65,4 +66,4 @@ python3 -m http.server 8000
 ## Контакты
 
 - GitHub: [NerdySnake6](https://github.com/NerdySnake6)
-- Email: [mail10102005@gmail.com](mailto:mail10102005@gmail.com)
+- Email: [nerdysnake@yandex.ru](mailto:nerdysnake@yandex.ru)
