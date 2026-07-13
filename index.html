@@ -1,137 +1,41 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Игорь Калинин: backend-разработчик и дата-аналитик. Портфолио проектов, включая MVP карьерной платформы Трамплин, работу с API, анализ данных и машинное обучение.">
-  <meta name="author" content="Игорь Калинин">
-  <meta property="og:title" content="Игорь Калинин: Backend Developer / Data Analyst">
-  <meta property="og:description" content="Персональный сайт-резюме. Backend-разработка, анализ данных, прикладные сервисы и продуктовая логика.">
-  <meta property="og:type" content="website">
-  <title>Игорь Калинин: Backend Developer / Data Analyst</title>
+  <meta name="description" content="Choose the language for Igor Kalinin's portfolio: Backend & Data Developer.">
+  <title>Igor Kalinin / Игорь Калинин: Backend & Data Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260616-certificates-rail">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=20260713-language-entry">
 </head>
-<body>
-
-  <!-- ====== НАВИГАЦИЯ ====== -->
-  <nav class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#" class="nav__logo" id="nav-logo"></a>
-      <button class="nav__toggle" id="nav-toggle" aria-label="Открыть меню">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__links" id="nav-links"></ul>
-    </div>
-  </nav>
-
-  <!-- ====== HERO ====== -->
-  <header class="hero" id="hero">
-    <div class="hero__inner">
-      <div class="hero__content">
-        <p class="hero__greeting" id="hero-greeting"></p>
-        <h1 class="hero__name" id="hero-name"></h1>
-        <p class="hero__role" id="hero-role"></p>
-        <div class="hero__education" id="hero-education" hidden>
-          <span class="hero__education-line" id="hero-education-line"></span>
-          <span class="hero__education-profile" id="hero-education-profile"></span>
+<body class="language-page">
+  <main class="language-entry">
+    <section class="language-entry__card" aria-labelledby="language-entry-title">
+      <p class="language-entry__eyebrow">Portfolio</p>
+      <h1 class="language-entry__title" id="language-entry-title">
+        Igor Kalinin <span lang="ru">/ Игорь Калинин</span>
+      </h1>
+      <p class="language-entry__role">Backend &amp; Data Developer</p>
+      <p class="language-entry__prompt">Choose your language / <span lang="ru">Выберите язык</span></p>
+      <div class="language-entry__actions">
+        <a class="language-entry__link" href="ru/" lang="ru">
+          <span class="language-entry__link-code">RU</span>
+          <span>
+            <strong>Русский</strong>
+            <small>Открыть портфолио</small>
+          </span>
+        </a>
+        <div class="language-entry__link language-entry__link--disabled" aria-disabled="true">
+          <span class="language-entry__link-code">EN</span>
+          <span>
+            <strong>English</strong>
+            <small>English version is coming next</small>
+          </span>
         </div>
-        <div class="hero__contact-panel" id="hero-contact-panel">
-          <p class="hero__contact-kicker" id="hero-contact-kicker"></p>
-          <div class="hero__contacts" id="hero-contacts">
-            <a class="hero__contact" id="hero-contact-email" hidden>
-              <span class="hero__contact-icon" id="hero-contact-email-icon" aria-hidden="true"></span>
-              <span class="hero__contact-body">
-                <span class="hero__contact-label">Email</span>
-                <span class="hero__contact-text" id="hero-contact-email-text"></span>
-              </span>
-            </a>
-            <a class="hero__contact" id="hero-contact-github" hidden>
-              <span class="hero__contact-icon" id="hero-contact-github-icon" aria-hidden="true"></span>
-              <span class="hero__contact-body">
-                <span class="hero__contact-label">GitHub</span>
-                <span class="hero__contact-text" id="hero-contact-github-text"></span>
-              </span>
-            </a>
-            <a class="hero__contact" id="hero-contact-telegram" hidden>
-              <span class="hero__contact-icon" id="hero-contact-telegram-icon" aria-hidden="true"></span>
-              <span class="hero__contact-body">
-                <span class="hero__contact-label">Telegram</span>
-                <span class="hero__contact-text" id="hero-contact-telegram-text"></span>
-              </span>
-            </a>
-            <a class="hero__contact" id="hero-contact-phone" hidden>
-              <span class="hero__contact-icon" id="hero-contact-phone-icon" aria-hidden="true"></span>
-              <span class="hero__contact-body">
-                <span class="hero__contact-label">Телефон</span>
-                <span class="hero__contact-text" id="hero-contact-phone-text"></span>
-              </span>
-            </a>
-            <div class="hero__contact" id="hero-contact-location" hidden>
-              <span class="hero__contact-icon" id="hero-contact-location-icon" aria-hidden="true"></span>
-              <span class="hero__contact-body">
-                <span class="hero__contact-label">Местоположение</span>
-                <span class="hero__contact-text" id="hero-contact-location-text"></span>
-              </span>
-            </div>
-          </div>
-        </div>
-        <p class="hero__tagline" id="hero-tagline"></p>
-        <div class="hero__highlights" id="hero-highlights"></div>
-      </div>
-      <div class="hero__photo-wrapper">
-        <div class="hero__photo" id="hero-photo">
-          <span class="hero__photo-initials" id="hero-initials"></span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <!-- ====== ПРОЕКТЫ ====== -->
-    <section class="section section--alt" id="projects">
-      <div class="section__inner">
-        <h2 class="section__title" id="projects-title"></h2>
-        <div class="section__content projects__list" id="projects-list"></div>
-      </div>
-    </section>
-
-    <!-- ====== НАВЫКИ ====== -->
-    <section class="section section--alt" id="skills">
-      <div class="section__inner">
-        <h2 class="section__title" id="skills-title"></h2>
-        <div class="section__content skills__grid" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <!-- ====== ОБО МНЕ ====== -->
-    <section class="section" id="about">
-      <div class="section__inner">
-        <h2 class="section__title" id="about-title"></h2>
-        <div class="section__content about__text" id="about-text"></div>
-      </div>
-    </section>
-
-    <!-- ====== СЕРТИФИКАТЫ ====== -->
-    <section class="section" id="certificates">
-      <div class="section__inner">
-        <h2 class="section__title" id="certificates-title"></h2>
-        <div class="section__content certificates__grid" id="certificates-grid"></div>
-        <p class="certificates__empty" id="certificates-empty" style="display:none;">Раздел будет дополнен.</p>
       </div>
     </section>
   </main>
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <p class="footer__copy" id="footer-copy"></p>
-    </div>
-  </footer>
-
-  <script src="data.js?v=20260616-tramplin-result-copy"></script>
-  <script src="app.js?v=20260425-contact-ui"></script>
 </body>
 </html>

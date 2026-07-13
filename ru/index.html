@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Игорь Калинин: backend-разработчик и специалист по данным. Портфолио проектов в области backend-разработки, API, анализа данных и машинного обучения.">
+  <meta name="author" content="Игорь Калинин">
+  <title>Игорь Калинин: Backend &amp; Data Developer</title>
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=20260713-semantic-html">
+</head>
+<body data-modal-close-label="Закрыть окно">
+  <nav class="nav" id="nav" aria-label="Основная навигация">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">Игорь</a>
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        data-open-label="Открыть меню"
+        data-close-label="Закрыть меню"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#skills">Навыки</a></li>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#certificates">Сертификаты</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__greeting">Здравствуйте, меня зовут</p>
+        <h1 class="hero__name">Игорь Калинин</h1>
+        <p class="hero__alternate-name">Igor Kalinin</p>
+        <p class="hero__role">Backend &amp; Data Developer</p>
+        <div class="hero__education">
+          <span class="hero__education-line">Ожидаемый выпуск в 2028 году, РГПУ им. А. И. Герцена</span>
+          <span class="hero__education-profile">Профиль: Технологии разработки программного обеспечения и обработки больших данных</span>
+        </div>
+
+        <div class="hero__contact-panel">
+          <p class="hero__contact-kicker">Контакты</p>
+          <div class="hero__contacts">
+            <a class="hero__contact" href="mailto:nerdysnake@yandex.ru">
+              <span class="hero__contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+              </span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Email</span>
+                <span class="hero__contact-text">nerdysnake@yandex.ru</span>
+              </span>
+            </a>
+            <a class="hero__contact" href="https://github.com/NerdySnake6" target="_blank" rel="noopener">
+              <span class="hero__contact-icon" id="hero-contact-github-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">GitHub</span>
+                <span class="hero__contact-text">@NerdySnake6</span>
+              </span>
+            </a>
+            <a class="hero__contact" href="https://t.me/nerdysnake6" target="_blank" rel="noopener">
+              <span class="hero__contact-icon" id="hero-contact-telegram-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Telegram</span>
+                <span class="hero__contact-text">@nerdysnake6</span>
+              </span>
+            </a>
+            <a class="hero__contact" href="tel:+79215850922">
+              <span class="hero__contact-icon" id="hero-contact-phone-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.9.66 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.31 1.85.53 2.81.66A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Телефон</span>
+                <span class="hero__contact-text">+7 921 585-09-22</span>
+              </span>
+            </a>
+            <div class="hero__contact">
+              <span class="hero__contact-icon" id="hero-contact-location-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span class="hero__contact-body">
+                <span class="hero__contact-label">Местоположение</span>
+                <span class="hero__contact-text">Россия, Санкт-Петербург</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <p class="hero__tagline">Разрабатываю backend-сервисы и приложения для работы с данными: интегрирую API, автоматизирую сценарии, проектирую бизнес-логику и превращаю данные в понятные инструменты для пользователей и команд.</p>
+        <div class="hero__highlights">
+          <div class="hero__highlight">
+            <span class="hero__highlight-label">Python &amp; ML</span>
+            <span class="hero__highlight-desc">Анализ данных и машинное обучение</span>
+          </div>
+          <div class="hero__highlight">
+            <span class="hero__highlight-label">Big Data</span>
+            <span class="hero__highlight-desc">Работа с большими массивами данных</span>
+          </div>
+          <div class="hero__highlight">
+            <span class="hero__highlight-label">Прогнозирование</span>
+            <span class="hero__highlight-desc">Модели для предсказания показателей</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__photo-wrapper">
+        <div class="hero__photo">
+          <img src="../assets/photo-cropped-20260425.jpg" alt="Игорь Калинин" width="220" height="220">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--alt" id="projects">
+      <div class="section__inner">
+        <h2 class="section__title">Проекты</h2>
+        <div class="section__content projects__list">
+          <article class="project">
+            <div class="project__header">
+              <div class="project__badge">3 место в AI Business SPB</div>
+              <h3 class="project__title">Классификатор поисковых медиазапросов: ML-пайплайн для кейса Mediascope</h3>
+              <p class="project__task">Хакатонный ML-проект для классификации шумных пользовательских поисковых запросов по полям TypeQuery, Title и ContentType. Решение определяет, относится ли запрос к профессиональному видеоконтенту, нормализует название или франшизу и предсказывает тип контента: фильм, сериал, мультфильм, мультсериал и другие категории.</p>
+            </div>
+            <div class="project__details">
+              <div>
+                <div class="project__detail-label">Инструменты</div>
+                <div class="project__tools">
+                  <span class="project__tool">Python</span><span class="project__tool">pandas</span><span class="project__tool">NumPy</span><span class="project__tool">scikit-learn</span><span class="project__tool">RapidFuzz</span><span class="project__tool">SciPy</span><span class="project__tool">pymorphy3</span>
+                </div>
+              </div>
+              <div>
+                <div class="project__detail-label">Что сделано</div>
+                <p class="project__detail-value">Отвечал за финальную интеграцию ML-пайплайна: дорабатывал инференс, стабилизировал решение, подготавливал артефакты модели и объединял сигналы разных компонентов в итоговое предсказание. В проекте использовались словарный матчинг, retrieval-модуль, сопоставление на основе эмбеддингов, графовые признаки и калибровка предсказаний.</p>
+              </div>
+            </div>
+            <div class="project__result">
+              <span class="project__result-icon" aria-hidden="true">→</span>
+              <p class="project__result-text">Командный хакатонный проект, занявший 3 место в AI Business SPB. Репозиторий: <a href="https://github.com/NerdySnake6/AI_hackathon_ML_model" target="_blank" rel="noopener">GitHub</a></p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__header">
+              <div class="project__badge">2 место в финале if...else 2026</div>
+              <h3 class="project__title">Трамплин: AI-карьерная платформа для студентов и работодателей</h3>
+              <p class="project__task">Трамплин — интерактивная карьерная платформа для студентов, выпускников, работодателей, кураторов и администратора. Сервис объединяет карту и ленту возможностей с фильтрами по типу, формату, локации и вознаграждению, поддерживает отклики, сопроводительные письма, нетворкинг между студентами и отдельные рабочие сценарии для каждой роли.</p>
+            </div>
+            <div class="project__details">
+              <div>
+                <div class="project__detail-label">Инструменты</div>
+                <div class="project__tools">
+                  <span class="project__tool">FastAPI</span><span class="project__tool">SQLAlchemy</span><span class="project__tool">Alembic</span><span class="project__tool">PostgreSQL</span><span class="project__tool">JavaScript</span><span class="project__tool">Vite</span><span class="project__tool">Bootstrap</span><span class="project__tool">JWT</span><span class="project__tool">Docker</span><span class="project__tool">Yandex Maps API</span><span class="project__tool">Yandex Geocoder</span><span class="project__tool">Polza.ai API</span>
+                </div>
+              </div>
+              <div>
+                <div class="project__detail-label">Что сделано</div>
+                <p class="project__detail-value">Разработал backend и значительную часть frontend-логики: JWT-авторизацию, ролевую модель applicant/employer/curator/admin, отклики и статусы, работу с PostgreSQL и Alembic-миграциями, геокодирование и карту возможностей. Подключил AI-сценарии через Polza.ai: улучшение описаний вакансий, подбор тегов, генерацию черновиков сопроводительных писем и AI-проверку рисков для куратора. Настроил двухуровневую модерацию с rule-based фильтром, AI-чеклистом и ограничениями для новых работодателей.</p>
+              </div>
+            </div>
+            <div class="project__result">
+              <span class="project__result-icon" aria-hidden="true">→</span>
+              <p class="project__result-text">Проект занял 2 место в финале if...else 2026. Реализованы ролевая модель, модерация рисков, карта возможностей, PostgreSQL-хранилище, Docker-деплой, техническое SEO и полный цикл AI-интеграций. Ссылки: <a href="https://tramplin.site/" target="_blank" rel="noopener">Открыть сайт</a><span class="project__link-separator">•</span><a href="https://github.com/NerdySnake6/Tramplin-ai-career-platform" target="_blank" rel="noopener">GitHub</a></p>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__header">
+              <h3 class="project__title">BondLadder: подбор портфеля облигаций Московской биржи</h3>
+              <p class="project__task">Веб-приложение для подбора портфеля облигаций Московской биржи под сумму и срок пользователя. Сервис загружает данные MOEX, очищает и фильтрует выпуски, а затем формирует готовый набор бумаг с учетом срока, ликвидности и базовой диверсификации.</p>
+            </div>
+            <div class="project__details">
+              <div>
+                <div class="project__detail-label">Инструменты</div>
+                <div class="project__tools">
+                  <span class="project__tool">Python</span><span class="project__tool">Flask</span><span class="project__tool">Flask-WTF</span><span class="project__tool">Flask-Login</span><span class="project__tool">Flask-SQLAlchemy</span><span class="project__tool">pandas</span><span class="project__tool">requests</span><span class="project__tool">openpyxl</span><span class="project__tool">MOEX ISS</span><span class="project__tool">SQLite</span><span class="project__tool">PostgreSQL</span>
+                </div>
+              </div>
+              <div>
+                <div class="project__detail-label">Что сделано</div>
+                <p class="project__detail-value">Реализовал backend-логику сервиса подбора облигационного портфеля: загрузку данных MOEX, очистку и нормализацию выпусков, расчет параметров бумаг и фильтрацию по сроку, ликвидности и бюджету пользователя. Отвечал за аналитическую часть и основной backend. Фронтенд и подключение БД выполнялись совместно с напарником.</p>
+              </div>
+            </div>
+            <div class="project__result">
+              <span class="project__result-icon" aria-hidden="true">→</span>
+              <p class="project__result-text">Коммерческий проект в приватном репозитории. При необходимости готов поделиться кодом, архитектурой и деталями реализации по запросу.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="skills">
+      <div class="section__inner">
+        <h2 class="section__title">Навыки</h2>
+        <div class="section__content skills__grid">
+          <article class="skill-card">
+            <h3 class="skill-card__category">Анализ данных</h3>
+            <div class="skill-card__techs"><span class="skill-card__tech">Python</span><span class="skill-card__tech">NumPy</span><span class="skill-card__tech">pandas</span></div>
+            <p class="skill-card__desc">Инструменты для обработки информации, статистического анализа и построения прогнозных моделей. Позволяют работать с данными любого объёма: от таблиц до миллионов записей.</p>
+          </article>
+          <article class="skill-card">
+            <h3 class="skill-card__category">Базы данных</h3>
+            <div class="skill-card__techs"><span class="skill-card__tech">SQL</span><span class="skill-card__tech">PostgreSQL</span></div>
+            <p class="skill-card__desc">Работа со структурированными данными: выборки, фильтрация, агрегация и аналитические запросы. Основной инструмент для извлечения нужной информации из больших хранилищ.</p>
+          </article>
+          <article class="skill-card">
+            <h3 class="skill-card__category">AI и прогнозирование</h3>
+            <div class="skill-card__techs"><span class="skill-card__tech">Machine Learning</span><span class="skill-card__tech">Scikit-learn</span></div>
+            <p class="skill-card__desc">Построение моделей для поиска закономерностей в данных и прогнозирования показателей. Помогает принимать решения на основе фактов, а не интуиции.</p>
+          </article>
+          <article class="skill-card">
+            <h3 class="skill-card__category">Автоматизация</h3>
+            <div class="skill-card__techs"><span class="skill-card__tech">n8n</span></div>
+            <p class="skill-card__desc">Базовое понимание автоматизации процессов и интеграционных сценариев: работа с API, передача данных между сервисами, построение последовательностей шагов и no-code/low-code workflow. Понимаю общие принципы RAG и AI-автоматизации.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section__inner">
+        <h2 class="section__title">Обо мне</h2>
+        <div class="section__content about__text">
+          <p>Я backend-разработчик и специалист по данным с опытом создания прикладных сервисов, которые работают с данными и помогают принимать решения на их основе. Мне интересны задачи на стыке разработки и аналитики: интеграция API, сбор и хранение данных, их обработка, анализ и превращение результатов в рабочий инструмент для пользователя или команды.</p>
+          <p>Работаю с Python, SQL, FastAPI, Flask и аналитическими библиотеками. Комфортно чувствую себя в проектах, где нужно одновременно продумать backend-архитектуру, реализовать бизнес-логику и разобраться в данных: очистить их, найти закономерности, подготовить выводы и сделать результат понятным и удобным в использовании.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certificates">
+      <div class="section__inner">
+        <h2 class="section__title">Сертификаты</h2>
+        <div class="section__content certificates__grid">
+          <button class="certificate" type="button" aria-label="Открыть сертификат: Прикладное программирование if...else: 2 место" data-certificate-image="../assets/certificates/braim-if-else-final-2-place.webp" data-certificate-title="Прикладное программирование if...else: 2 место" data-certificate-meta="BRAIM / ИТ-Планета · 2026">
+            <span class="certificate__image"><img src="../assets/certificates/braim-if-else-final-2-place.webp" alt="Сертификат за 2 место в прикладном программировании if...else" loading="lazy"></span>
+            <span class="certificate__info"><span class="certificate__title">Прикладное программирование if...else: 2 место</span><span class="certificate__meta">BRAIM / ИТ-Планета · 2026</span></span>
+          </button>
+          <button class="certificate" type="button" aria-label="Открыть сертификат: Lenta Tech Life Hack" data-certificate-image="../assets/certificates/lenta-tech-life-hack.webp" data-certificate-title="Lenta Tech Life Hack" data-certificate-meta="Lenta Tech / Changellenge · 2026">
+            <span class="certificate__image"><img src="../assets/certificates/lenta-tech-life-hack.webp" alt="Сертификат Lenta Tech Life Hack" loading="lazy"></span>
+            <span class="certificate__info"><span class="certificate__title">Lenta Tech Life Hack</span><span class="certificate__meta">Lenta Tech / Changellenge · 2026</span></span>
+          </button>
+          <button class="certificate" type="button" aria-label="Открыть сертификат: Интерактивный тренажер по SQL" data-certificate-image="../assets/certificates/stepik-sql-trainer.webp" data-certificate-title="Интерактивный тренажер по SQL" data-certificate-meta="Stepik / ДВФУ · 2026">
+            <span class="certificate__image"><img src="../assets/certificates/stepik-sql-trainer.webp" alt="Сертификат интерактивного тренажера по SQL" loading="lazy"></span>
+            <span class="certificate__info"><span class="certificate__title">Интерактивный тренажер по SQL</span><span class="certificate__meta">Stepik / ДВФУ · 2026</span></span>
+          </button>
+          <button class="certificate" type="button" aria-label="Открыть сертификат: AI Business SPB: 3 место" data-certificate-image="../assets/certificates/ai-business-spb-prize.png" data-certificate-title="AI Business SPB: 3 место" data-certificate-meta="Yandex AI Studio / ИТ-Диалог · 2026">
+            <span class="certificate__image"><img src="../assets/certificates/ai-business-spb-prize.png" alt="Сертификат за 3 место в AI Business SPB" loading="lazy"></span>
+            <span class="certificate__info"><span class="certificate__title">AI Business SPB: 3 место</span><span class="certificate__meta">Yandex AI Studio / ИТ-Диалог · 2026</span></span>
+          </button>
+          <button class="certificate" type="button" aria-label="Открыть сертификат: СУБД Postgres Pro" data-certificate-image="../assets/certificates/braim-postgres-pro.png" data-certificate-title="СУБД Postgres Pro" data-certificate-meta="BRAIM / ИТ-Планета · 2026">
+            <span class="certificate__image"><img src="../assets/certificates/braim-postgres-pro.png" alt="Сертификат СУБД Postgres Pro" loading="lazy"></span>
+            <span class="certificate__info"><span class="certificate__title">СУБД Postgres Pro</span><span class="certificate__meta">BRAIM / ИТ-Планета · 2026</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__copy">© <span id="footer-year">2026</span> Игорь Калинин</p>
+    </div>
+  </footer>
+
+  <script src="../app.js?v=20260713-progressive-enhancement"></script>
+</body>
+</html>

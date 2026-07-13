@@ -1,12 +1,15 @@
 # Игорь Калинин: Portfolio
 
-Персональный сайт-портфолио backend-разработчика и дата-аналитика.
+Персональный сайт-портфолио Backend & Data Developer.
 
 Репозиторий содержит исходный код сайта, в котором собраны ключевые направления моей работы: backend-разработка, аналитика данных, прикладные проекты, достижения и сертификаты.
 
 ## Онлайн-версия
 
 [nerdysnake6.github.io](https://nerdysnake6.github.io/)
+
+Корневая страница предлагает выбрать язык. Русская версия доступна по адресу
+[nerdysnake6.github.io/ru/](https://nerdysnake6.github.io/ru/).
 
 ## Что представлено на сайте
 
@@ -40,17 +43,18 @@ my-portfolio/
 │   └── README.md
 ├── scripts/
 │   └── validate-site.mjs
+├── ru/
+│   └── index.html
 ├── index.html
 ├── style.css
 ├── app.js
-├── data.js
 └── README.md
 ```
 
-- `index.html` - структура страницы
+- `index.html` - страница выбора языка
+- `ru/index.html` - русская версия портфолио
 - `style.css` - стили интерфейса
-- `app.js` - логика рендеринга
-- `data.js` - контент сайта
+- `app.js` - progressive enhancement для меню и сертификатов
 - `assets/` - изображения профиля и сертификатов
 - `.github/workflows/pages.yml` - CI и деплой в GitHub Pages
 - `scripts/validate-site.mjs` - проверка структуры сайта
