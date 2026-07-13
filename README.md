@@ -38,17 +38,25 @@ my-portfolio/
 │       └── pages.yml
 ├── assets/
 │   ├── certificates/
+│   ├── og/
+│   │   ├── portfolio-preview.png
+│   │   └── portfolio-preview.svg
+│   ├── favicon.svg
 │   ├── photo-cropped-20260425.jpg
 │   └── photo.jpg
 ├── docs/
 │   └── README.md
 ├── scripts/
+│   ├── site-config.mjs
+│   ├── update-site-origin.mjs
 │   └── validate-site.mjs
 ├── en/
 │   └── index.html
 ├── ru/
 │   └── index.html
 ├── index.html
+├── robots.txt
+├── sitemap.xml
 ├── style.css
 ├── app.js
 └── README.md
@@ -60,8 +68,12 @@ my-portfolio/
 - `style.css` - стили интерфейса
 - `app.js` - progressive enhancement для меню, переключателя языка и сертификатов
 - `assets/` - изображения профиля и сертификатов
+- `assets/og/portfolio-preview.png` - Open Graph-превью для социальных платформ
+- `robots.txt` и `sitemap.xml` - базовые инструкции для поисковых роботов
 - `.github/workflows/pages.yml` - CI и деплой в GitHub Pages
-- `scripts/validate-site.mjs` - проверка структуры сайта
+- `scripts/site-config.mjs` - централизованный origin и публичные URL
+- `scripts/update-site-origin.mjs` - синхронизация нового origin во всех SEO-файлах
+- `scripts/validate-site.mjs` - проверка структуры сайта, SEO и локальных ресурсов
 
 ## Локальный запуск
 
@@ -70,6 +82,16 @@ python3 -m http.server 8000
 ```
 
 После запуска сайт доступен по адресу `http://127.0.0.1:8000`.
+
+## Проверка
+
+```bash
+node --check app.js
+node --check scripts/site-config.mjs
+node --check scripts/update-site-origin.mjs
+node --check scripts/validate-site.mjs
+node scripts/validate-site.mjs
+```
 
 ## Контакты
 

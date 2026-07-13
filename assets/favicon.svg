@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Igor Kalinin</title>
+  <defs>
+    <linearGradient id="background" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4338ca"/>
+      <stop offset="1" stop-color="#0f766e"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#background)"/>
+  <path d="M17 15h22v7h-7v20h7v7H17v-7h7V22h-7z" fill="#fff"/>
+  <path d="M41 26l8-9h8L47 29l11 20h-9l-7-14-1 1z" fill="#ccfbf1"/>
+</svg>
