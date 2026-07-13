@@ -53,6 +53,9 @@ jobs:
           if [ -d ru ]; then
             cp -R ru _site/ru
           fi
+          if [ -d en ]; then
+            cp -R en _site/en
+          fi
 
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'

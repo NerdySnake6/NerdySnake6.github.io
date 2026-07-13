@@ -9,7 +9,8 @@
 [nerdysnake6.github.io](https://nerdysnake6.github.io/)
 
 Корневая страница предлагает выбрать язык. Русская версия доступна по адресу
-[nerdysnake6.github.io/ru/](https://nerdysnake6.github.io/ru/).
+[nerdysnake6.github.io/ru/](https://nerdysnake6.github.io/ru/), английская — по адресу
+[nerdysnake6.github.io/en/](https://nerdysnake6.github.io/en/).
 
 ## Что представлено на сайте
 
@@ -43,6 +44,8 @@ my-portfolio/
 │   └── README.md
 ├── scripts/
 │   └── validate-site.mjs
+├── en/
+│   └── index.html
 ├── ru/
 │   └── index.html
 ├── index.html
@@ -53,8 +56,9 @@ my-portfolio/
 
 - `index.html` - страница выбора языка
 - `ru/index.html` - русская версия портфолио
+- `en/index.html` - английская версия портфолио
 - `style.css` - стили интерфейса
-- `app.js` - progressive enhancement для меню и сертификатов
+- `app.js` - progressive enhancement для меню, переключателя языка и сертификатов
 - `assets/` - изображения профиля и сертификатов
 - `.github/workflows/pages.yml` - CI и деплой в GitHub Pages
 - `scripts/validate-site.mjs` - проверка структуры сайта

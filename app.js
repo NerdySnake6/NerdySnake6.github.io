@@ -202,6 +202,26 @@
     if (year) year.textContent = new Date().getFullYear();
   }
 
+  function initLanguageSwitches() {
+    const switches = document.querySelectorAll('[data-language-switch]');
+    if (switches.length === 0) return;
+
+    switches.forEach(link => {
+      const baseHref = link.getAttribute('href');
+      if (!baseHref) return;
+
+      function syncSectionHash() {
+        const target = new URL(baseHref, window.location.href);
+        const sectionId = window.location.hash.slice(1);
+        target.hash = sectionId && document.getElementById(sectionId) ? window.location.hash : '';
+        link.setAttribute('href', `${target.pathname}${target.search}${target.hash}`);
+      }
+
+      window.addEventListener('hashchange', syncSectionHash);
+      syncSectionHash();
+    });
+  }
+
   function revealHero() {
     const hero = document.getElementById('hero');
     if (!hero) return;
@@ -215,6 +235,7 @@
     initMobileNavigation();
     initCertificates();
     initFooterYear();
+    initLanguageSwitches();
     revealHero();
   }
 

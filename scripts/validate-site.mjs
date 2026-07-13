@@ -9,6 +9,7 @@ const rootDir = path.resolve(__dirname, '..');
 const requiredFiles = [
   'index.html',
   'ru/index.html',
+  'en/index.html',
   'style.css',
   'app.js',
   '.nojekyll'
@@ -138,8 +139,8 @@ function validateRootPage(html) {
   if (!/<a\b[^>]*\bhref=["']ru\/["']/i.test(html)) {
     addError('index.html: отсутствует рабочая ссылка на русскую версию ru/.');
   }
-  if (/<a\b[^>]*\bhref=["']en\/["']/i.test(html)) {
-    addError('index.html: английская ссылка не должна быть активной до итерации 2.');
+  if (!/<a\b[^>]*\bhref=["']en\/["']/i.test(html)) {
+    addError('index.html: отсутствует рабочая ссылка на английскую версию en/.');
   }
 }
 
@@ -162,11 +163,45 @@ function validateRussianPage(html) {
   if (/data\.js|\bsiteData\b/.test(html)) {
     addError('ru/index.html: статическая русская версия не должна зависеть от data.js/siteData.');
   }
+  if (!/<a\b[^>]*\bhref=["']\.\.\/en\/["'][^>]*\bhreflang=["']en["'][^>]*\bdata-language-switch\b/i.test(html)) {
+    addError('ru/index.html: отсутствует обычная ссылка-переключатель на английскую версию.');
+  }
 
   const ids = new Set(extractHtmlIds(html));
   for (const section of requiredSections) {
     if (!ids.has(section)) {
       addError(`ru/index.html: отсутствует обязательный раздел id="${section}".`);
+    }
+  }
+}
+
+function validateEnglishPage(html) {
+  const content = textContent(html);
+  const requiredSections = ['hero', 'projects', 'skills', 'about', 'certificates'];
+
+  if (!/<html\s+lang=["']en["']/i.test(html)) {
+    addError('en/index.html: ожидается lang="en".');
+  }
+  if (!/<h1\b[^>]*>\s*Igor Kalinin\s*<\/h1>/i.test(html)) {
+    addError('en/index.html: h1 должен содержать имя "Igor Kalinin" в исходном HTML.');
+  }
+  if (!content.includes('Игорь Калинин')) {
+    addError('en/index.html: отсутствует альтернативное написание имени "Игорь Калинин".');
+  }
+  if (content.length < 5000) {
+    addError('en/index.html: английский основной текст слишком короткий или зависит от JavaScript.');
+  }
+  if (/data\.js|\bsiteData\b/.test(html)) {
+    addError('en/index.html: статическая английская версия не должна зависеть от data.js/siteData.');
+  }
+  if (!/<a\b[^>]*\bhref=["']\.\.\/ru\/["'][^>]*\bhreflang=["']ru["'][^>]*\bdata-language-switch\b/i.test(html)) {
+    addError('en/index.html: отсутствует обычная ссылка-переключатель на русскую версию.');
+  }
+
+  const ids = new Set(extractHtmlIds(html));
+  for (const section of requiredSections) {
+    if (!ids.has(section)) {
+      addError(`en/index.html: отсутствует обязательный раздел id="${section}".`);
     }
   }
 }
@@ -192,6 +227,7 @@ async function main() {
   if (errors.length === 0) {
     await validatePage('index.html', validateRootPage);
     await validatePage('ru/index.html', validateRussianPage);
+    await validatePage('en/index.html', validateEnglishPage);
   }
 
   if (errors.length > 0) {
@@ -202,7 +238,7 @@ async function main() {
     return;
   }
 
-  console.log('Static site validation passed for the language entry and Russian portfolio.');
+  console.log('Static site validation passed for the language entry and both portfolio versions.');
 }
 
 await main();
