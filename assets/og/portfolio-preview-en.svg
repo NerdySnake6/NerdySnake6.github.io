@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Igor Kalinin — Backend &amp; Data Developer</title>
+  <desc id="description">A professional portfolio cover with Igor Kalinin's portrait and specialization.</desc>
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <svg x="48" y="40" width="380" height="550" viewBox="200 150 1507 2181" preserveAspectRatio="xMidYMid slice" overflow="hidden">
+    <image width="1707" height="2560" href="../photo-20260425.jpg"/>
+  </svg>
+  <rect x="48.5" y="40.5" width="379" height="549" rx="2" fill="none" stroke="#d7e4e2"/>
+  <line x1="478" y1="40" x2="478" y2="590" stroke="#0b8f83" stroke-width="2"/>
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="540" y="226" fill="#162226" font-size="66" font-weight="600" letter-spacing="-1.8">Igor Kalinin</text>
+    <text x="543" y="290" fill="#0b766e" font-size="30" font-weight="500" letter-spacing="-0.4">Backend &amp; Data Developer</text>
+    <text x="543" y="374" fill="#3f4e52" font-size="23" font-weight="400">
+      <tspan x="543" dy="0">I build backend services, APIs,</tspan>
+      <tspan x="543" dy="35">and data-driven products.</tspan>
+    </text>
+    <line x1="543" y1="516" x2="587" y2="516" stroke="#0b8f83" stroke-width="2"/>
+    <text x="605" y="523" fill="#53666a" font-size="19" font-weight="400" letter-spacing="0.2">nerdysnake6.github.io</text>
+  </g>
+</svg>

@@ -24,6 +24,8 @@ const pageDefinitions = [
     alternateName: 'Игорь Калинин',
     ogLocale: 'en_US',
     ogAlternateLocale: 'ru_RU',
+    ogImage: seoAssets.socialPreviews.default,
+    ogImageAlt: 'Igor Kalinin / Игорь Калинин — Backend & Data Developer',
     isPortfolio: false
   },
   {
@@ -36,6 +38,8 @@ const pageDefinitions = [
     alternateName: 'Igor Kalinin',
     ogLocale: 'ru_RU',
     ogAlternateLocale: 'en_US',
+    ogImage: seoAssets.socialPreviews.ru,
+    ogImageAlt: 'Игорь Калинин — Backend & Data Developer',
     isPortfolio: true,
     languageSwitch: { href: '../en/', hreflang: 'en' }
   },
@@ -49,6 +53,8 @@ const pageDefinitions = [
     alternateName: 'Игорь Калинин',
     ogLocale: 'en_US',
     ogAlternateLocale: 'ru_RU',
+    ogImage: seoAssets.socialPreviews.en,
+    ogImageAlt: 'Igor Kalinin — Backend & Data Developer',
     isPortfolio: true,
     languageSwitch: { href: '../ru/', hreflang: 'ru' }
   }
@@ -69,8 +75,12 @@ const requiredFiles = [
   'scripts/site-config.mjs',
   'scripts/update-site-origin.mjs',
   'assets/favicon.svg',
-  'assets/og/portfolio-preview.svg',
-  'assets/og/portfolio-preview.png',
+  'assets/og/portfolio-preview-default.svg',
+  'assets/og/portfolio-preview-default.png',
+  'assets/og/portfolio-preview-ru.svg',
+  'assets/og/portfolio-preview-ru.png',
+  'assets/og/portfolio-preview-en.svg',
+  'assets/og/portfolio-preview-en.png',
   '.nojekyll'
 ];
 const errors = [];
@@ -308,20 +318,17 @@ function validateOpenGraph(definition, openGraph) {
     ['og:url', definition.canonical],
     ['og:locale', definition.ogLocale],
     ['og:locale:alternate', definition.ogAlternateLocale],
-    ['og:image', seoAssets.socialPreview],
+    ['og:image', definition.ogImage],
     ['og:image:type', 'image/png'],
     ['og:image:width', '1200'],
-    ['og:image:height', '630']
+    ['og:image:height', '630'],
+    ['og:image:alt', definition.ogImageAlt]
   ]);
 
   for (const [property, expectedValue] of expected) {
     if (openGraph.get(property) !== expectedValue) {
       addError(`${definition.relativePath}: ${property} должен иметь значение "${expectedValue}".`);
     }
-  }
-
-  if (!openGraph.get('og:image:alt')?.trim()) {
-    addError(`${definition.relativePath}: отсутствует непустой og:image:alt.`);
   }
 }
 
@@ -507,20 +514,42 @@ async function validateRobots() {
   }
 }
 
-async function validatePreviewImage() {
-  const previewPath = path.join(rootDir, 'assets/og/portfolio-preview.png');
+async function validatePreviewImage(relativePath) {
+  const previewPath = path.join(rootDir, relativePath);
   const buffer = await fs.readFile(previewPath);
   const pngSignature = '89504e470d0a1a0a';
 
   if (buffer.subarray(0, 8).toString('hex') !== pngSignature || buffer.length < 24) {
-    addError('Open Graph preview должен быть валидным PNG-файлом.');
+    addError(`${relativePath}: Open Graph preview должен быть валидным PNG-файлом.`);
     return;
   }
 
   const width = buffer.readUInt32BE(16);
   const height = buffer.readUInt32BE(20);
   if (width !== 1200 || height !== 630) {
-    addError(`Open Graph preview должен иметь размер 1200×630, получено ${width}×${height}.`);
+    addError(`${relativePath}: Open Graph preview должен иметь размер 1200×630, получено ${width}×${height}.`);
+  }
+}
+
+async function validatePreviewImages() {
+  const previewBaseNames = [
+    'portfolio-preview-default',
+    'portfolio-preview-ru',
+    'portfolio-preview-en'
+  ];
+
+  for (const baseName of previewBaseNames) {
+    const pngPath = `assets/og/${baseName}.png`;
+    const svgPath = `assets/og/${baseName}.svg`;
+    const svg = await fs.readFile(path.join(rootDir, svgPath), 'utf8');
+
+    await validatePreviewImage(pngPath);
+    if (!/<svg\b[^>]*\bwidth=["']1200["'][^>]*\bheight=["']630["'][^>]*\bviewBox=["']0 0 1200 630["']/i.test(svg)) {
+      addError(`${svgPath}: ожидается SVG размером 1200×630 с соответствующим viewBox.`);
+    }
+    if (!/href=["']\.\.\/photo-20260425\.jpg["']/i.test(svg)) {
+      addError(`${svgPath}: исходник должен использовать общую профессиональную фотографию.`);
+    }
   }
 }
 
@@ -551,7 +580,7 @@ async function main() {
     validateUniqueMetadata(records);
     await validateSitemap();
     await validateRobots();
-    await validatePreviewImage();
+    await validatePreviewImages();
     await validateFavicon();
   }
 
