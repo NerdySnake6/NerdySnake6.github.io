@@ -66,6 +66,10 @@ const expectedHreflang = new Map([
   ['x-default', pageUrls.root]
 ]);
 const requiredPortfolioSections = ['hero', 'projects', 'skills', 'about', 'certificates'];
+const googleVerification = Object.freeze({
+  relativePath: 'googled97190a15f76ecb8.html',
+  content: 'google-site-verification: googled97190a15f76ecb8.html'
+});
 const requiredFiles = [
   ...pageDefinitions.map(page => page.relativePath),
   'style.css',
@@ -81,6 +85,7 @@ const requiredFiles = [
   'assets/og/portfolio-preview-ru.png',
   'assets/og/portfolio-preview-en.svg',
   'assets/og/portfolio-preview-en.png',
+  googleVerification.relativePath,
   '.nojekyll'
 ];
 const errors = [];
@@ -560,6 +565,17 @@ async function validateFavicon() {
   }
 }
 
+async function validateGoogleVerification() {
+  const verification = await fs.readFile(
+    path.join(rootDir, googleVerification.relativePath),
+    'utf8'
+  );
+
+  if (verification.trim() !== googleVerification.content) {
+    addError(`${googleVerification.relativePath}: содержимое файла подтверждения Google изменено.`);
+  }
+}
+
 async function main() {
   if (!siteOrigin.startsWith('https://')) {
     addError('scripts/site-config.mjs: siteOrigin должен использовать HTTPS.');
@@ -582,6 +598,7 @@ async function main() {
     await validateRobots();
     await validatePreviewImages();
     await validateFavicon();
+    await validateGoogleVerification();
   }
 
   if (errors.length > 0) {
