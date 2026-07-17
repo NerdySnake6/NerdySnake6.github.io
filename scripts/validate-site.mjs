@@ -70,6 +70,10 @@ const googleVerification = Object.freeze({
   relativePath: 'googled97190a15f76ecb8.html',
   content: 'google-site-verification: googled97190a15f76ecb8.html'
 });
+const yandexVerification = Object.freeze({
+  relativePath: 'yandex_8fa605cab47da265.html',
+  token: '8fa605cab47da265'
+});
 const requiredFiles = [
   ...pageDefinitions.map(page => page.relativePath),
   'style.css',
@@ -86,6 +90,7 @@ const requiredFiles = [
   'assets/og/portfolio-preview-en.svg',
   'assets/og/portfolio-preview-en.png',
   googleVerification.relativePath,
+  yandexVerification.relativePath,
   '.nojekyll'
 ];
 const errors = [];
@@ -576,6 +581,18 @@ async function validateGoogleVerification() {
   }
 }
 
+async function validateYandexVerification() {
+  const verification = await fs.readFile(
+    path.join(rootDir, yandexVerification.relativePath),
+    'utf8'
+  );
+  const expectedBody = `<body>Verification: ${yandexVerification.token}</body>`;
+
+  if (!verification.includes(expectedBody)) {
+    addError(`${yandexVerification.relativePath}: токен подтверждения Яндекса изменён.`);
+  }
+}
+
 async function main() {
   if (!siteOrigin.startsWith('https://')) {
     addError('scripts/site-config.mjs: siteOrigin должен использовать HTTPS.');
@@ -599,6 +616,7 @@ async function main() {
     await validatePreviewImages();
     await validateFavicon();
     await validateGoogleVerification();
+    await validateYandexVerification();
   }
 
   if (errors.length > 0) {
