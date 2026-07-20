@@ -97,3 +97,4 @@ node scripts/validate-site.mjs
 
 - GitHub: [NerdySnake6](https://github.com/NerdySnake6)
 - Email: [nerdysnake@yandex.ru](mailto:nerdysnake@yandex.ru)
+- VK: [@nerdysnake6](https://vk.ru/nerdysnake6)

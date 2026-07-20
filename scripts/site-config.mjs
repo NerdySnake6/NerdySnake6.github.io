@@ -23,3 +23,4 @@ export const seoAssets = Object.freeze({
 });
 
 export const githubProfileUrl = 'https://github.com/NerdySnake6';
+export const vkProfileUrl = 'https://vk.ru/nerdysnake6';

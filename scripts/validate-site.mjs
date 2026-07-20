@@ -6,7 +6,8 @@ import {
   githubProfileUrl,
   pageUrls,
   seoAssets,
-  siteOrigin
+  siteOrigin,
+  vkProfileUrl
 } from './site-config.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -378,6 +379,9 @@ function validateStructuredData(definition, jsonLdValues) {
   }
   if (!Array.isArray(person.sameAs) || !person.sameAs.includes(githubProfileUrl)) {
     addError(`${definition.relativePath}: Person.sameAs должен содержать GitHub-профиль.`);
+  }
+  if (!Array.isArray(person.sameAs) || !person.sameAs.includes(vkProfileUrl)) {
+    addError(`${definition.relativePath}: Person.sameAs должен содержать VK-профиль.`);
   }
   if ('email' in person || 'telephone' in person) {
     addError(`${definition.relativePath}: JSON-LD не должен дублировать email или телефон.`);
