@@ -17,8 +17,9 @@ my-portfolio/
 │   │   ├── braim-postgres-pro.png
 │   │   └── stepik-sql-trainer.webp
 │   ├── og/
-│   │   ├── portfolio-preview.png
-│   │   └── portfolio-preview.svg
+│   │   ├── portfolio-preview-default.{svg,png}
+│   │   ├── portfolio-preview-en.{svg,png}
+│   │   └── portfolio-preview-ru.{svg,png}
 │   ├── favicon.svg
 │   ├── photo-cropped-20260425.jpg
 │   └── photo.jpg
@@ -64,8 +65,11 @@ node scripts/validate-site.mjs
 
 - `assets/photo-cropped-20260425.jpg` - основное фото профиля на сайте
 - `assets/certificates/` - изображения сертификатов
-- `assets/og/portfolio-preview.svg` - редактируемый исходник Open Graph-карточки
-- `assets/og/portfolio-preview.png` - публикуемая карточка 1200×630
+- `assets/og/portfolio-preview-default.svg` - редактируемый исходник карточки
+  корневой страницы
+- `assets/og/portfolio-preview-ru.svg` - редактируемый исходник русской карточки
+- `assets/og/portfolio-preview-en.svg` - редактируемый исходник английской карточки
+- одноимённые PNG-файлы - публикуемые карточки 1200×630
 - `assets/favicon.svg` - favicon сайта
 
 ## Публикация

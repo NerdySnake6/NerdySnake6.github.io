@@ -1,6 +1,8 @@
-# Игорь Калинин: Portfolio
+# Igor Kalinin / Игорь Калинин — Portfolio
 
-Персональный сайт-портфолио Backend & Data Developer.
+Multilingual portfolio of Igor Kalinin, a Backend & Data Developer. Русская и
+английская версии доступны по отдельным URL и полностью индексируются без
+JavaScript.
 
 Репозиторий содержит исходный код сайта, в котором собраны ключевые направления моей работы: backend-разработка, аналитика данных, прикладные проекты, достижения и сертификаты.
 
@@ -11,6 +13,8 @@
 Корневая страница предлагает выбрать язык. Русская версия доступна по адресу
 [nerdysnake6.github.io/ru/](https://nerdysnake6.github.io/ru/), английская — по адресу
 [nerdysnake6.github.io/en/](https://nerdysnake6.github.io/en/).
+
+![English version of Igor Kalinin's portfolio](assets/portfolio-screenshot-en.jpg)
 
 ## Что представлено на сайте
 
@@ -35,13 +39,16 @@
 my-portfolio/
 ├── .github/
 │   └── workflows/
+│       ├── codeql.yml
 │       └── pages.yml
 ├── assets/
 │   ├── certificates/
 │   ├── og/
-│   │   ├── portfolio-preview.png
-│   │   └── portfolio-preview.svg
+│   │   ├── portfolio-preview-default.{svg,png}
+│   │   ├── portfolio-preview-en.{svg,png}
+│   │   └── portfolio-preview-ru.{svg,png}
 │   ├── favicon.svg
+│   ├── portfolio-screenshot-en.jpg
 │   ├── photo-cropped-20260425.jpg
 │   └── photo.jpg
 ├── docs/
@@ -68,12 +75,23 @@ my-portfolio/
 - `style.css` - стили интерфейса
 - `app.js` - progressive enhancement для меню, переключателя языка и сертификатов
 - `assets/` - изображения профиля и сертификатов
-- `assets/og/portfolio-preview.png` - Open Graph-превью для социальных платформ
+- `assets/og/` - локализованные Open Graph-превью; SVG хранит редактируемый
+  исходник, PNG используется социальными платформами
+- `assets/portfolio-screenshot-en.jpg` - актуальный скриншот опубликованного сайта
 - `robots.txt` и `sitemap.xml` - базовые инструкции для поисковых роботов
 - `.github/workflows/pages.yml` - CI и деплой в GitHub Pages
 - `scripts/site-config.mjs` - централизованный origin и публичные URL
 - `scripts/update-site-origin.mjs` - синхронизация нового origin во всех SEO-файлах
 - `scripts/validate-site.mjs` - проверка структуры сайта, SEO и локальных ресурсов
+
+## SEO и локализация
+
+- отдельные URL `/ru/` и `/en/`, а также корневая страница выбора языка
+- `canonical` и взаимные `hreflang` для `ru`, `en` и `x-default`
+- локализованные title, description и Open Graph-данные
+- JSON-LD `ProfilePage` и `Person`
+- `robots.txt`, `sitemap.xml` и файлы подтверждения Google и Яндекса
+- централизованный origin в `scripts/site-config.mjs`
 
 ## Локальный запуск
 
